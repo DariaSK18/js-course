@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All together</h1>
+    <script>
+        // Задача -2. Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.
+        // let oddNum = 0
+        // let evenNum = 0
+        // for (let i = 1; i <= 100; i++) {
+        //     let randomNum = 1 + Math.floor(Math.random() * 1000)
+        //     document.write(`${i} -  ${randomNum}<br>`)
+        //     if (randomNum % 2 === 0)
+        //         evenNum++
+        //     else
+        //         oddNum++
+        // }
+        // if (oddNum > evenNum)
+        //     document.write(`There is more odd numbers - ${oddNum}`)
+        // else if (evenNum > oddNum)
+        //     document.write(`There is more even numbers - ${evenNum}`)
+        // else
+        //     document.write('Equal amount of numbers')
+
+
+        // Задача -1. Вивести на екран номери місяців весни і літа (від 3 до 8)
+        // let nameOfMonth
+        // for (let i = 3; i <= 8; i++) {
+        //     switch (i) {
+        //         case 3: nameOfMonth = 'March'
+        //             break;
+        //         case 4: nameOfMonth = 'April'
+        //             break;
+        //         case 5: nameOfMonth = 'May'
+        //             break;
+        //         case 6: nameOfMonth = 'June'
+        //             break;
+        //         case 7: nameOfMonth = 'July'
+        //             break;
+        //         case 8: nameOfMonth = 'August'
+        //             break;
+        //         default: alert('Wrong month')
+        //     }
+        //     document.write(`${nameOfMonth} is ${i} of the Year <br>`)
+        // }
+
+        //    Задача 0. Вивести на екран 8 кнопок з написом “Hello”.
+        // for (let i = 0; i < 8; i++) {
+        //    document.write('hello <br>')
+        // }
+
+        // Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем.
+        // let amountOfRandomNum = parseInt(prompt('Enter amount of list items'))
+
+        // document.write('<ul>')
+        // for (let i = 0; i < amountOfRandomNum; i++) {
+
+        //     const randomNum = 1 + Math.floor(Math.random() * 100)
+
+        //     document.write(`<li>${randomNum}</li>`)
+        // }
+        // document.write('</ul>')
+
+        // Задача 2. Створити 10 елементів для введення цін продуктів.
+
+        //     for (let i = 1; i <= 10; i++) {
+        //         document.write(`
+        //    Product #${i} <input> <br>
+        //    `)
+        //     }
+
+        // Задача 3. Вивести таблицю з одним рядком і  7 стовпцями.
+        // document.write('<table border=1px>')
+        // document.write('<tr>')
+        // for (let i = 1; i <= 7; i++) {
+        //     document.write(`<td>${i}</td>`)
+        // }
+        // document.write('</td>')
+        // document.write('</tr>')
+
+        // Задача 4. Вивести таблицю з 3 рядків і 7 стовпців
+        // document.write('<table border=1px>')
+        //     for (let i = 1; i <= 3; i++) {
+        //         document.write('<tr>')
+        //             for (let j = 1; j <= 7; j++) {
+        //                document.write(`<td>${j}</td>`)
+        //             }
+        //         document.write('</tr>')
+        //     }
+        // document.write('</table>')
+
+        // Задача 5. Вивести таблицю
+
+        // let num = 1
+        // document.write('<table border=1px>')
+        // for (let i = 1; i <= 3; i++) {
+        //     document.write('<tr>')
+        //     for (let j = 1; j <= 3; j++) {
+        //         document.write(`<td>`)
+        //             document.write(`${num}`)
+        //             num++
+        //         document.write(`</td>`)
+        //     }
+        //     document.write('</tr>')
+        // }
+        // document.write('</table>')
+
+        // Задача 6. Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+        // let num = 1
+        // for (let v = 0; v < 3; v++) {
+        //     document.write('<table border=1px>')
+        //         for (let i = 1; i <= 3; i++) {
+        //             document.write('<tr>')
+        //                 for (let j = 1; j <= 3; j++) {
+        //                     document.write(`<td>`)
+        //                     document.write(`${num}`)
+        //                     num++
+        //                     document.write(`</td>`)
+        //                 }
+        //             document.write('</tr>')
+        //         }
+        //     document.write('</table>')
+        // }
+
+        // Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+        // const sectionNum = parseInt(prompt('How many sections?'))
+
+        // for (let i = 1; i <= sectionNum; i++) {
+        //     document.write(`<h1>Title ${i}</h1>`)
+        //     for (let p = 1; p <= i; p++) {
+        //         document.write(`<p>Section ${i} Text ${p}</p>`)
+        //     }
+        // }
+
+        // Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+
+        // alert('keep a number from 0 to 10 in your mind')
+        // for (let i = 0; i < 3; i++) {
+        //     const guessedNum = Math.floor(Math.random() * 10)
+        //     let conformation = confirm(`Your number is ${guessedNum}?`)
+        //     if (conformation == true) {
+        //         alert('I guessed it right!')
+        //     break
+        //     }
+        //     else {
+        //         if (i == 2)
+        //         alert ('you won')
+        //         }
+        //     }
+
+        // Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+
+        // alert('keep a number from 0 to 10 in your mind')
+        //     let result
+        // do {
+        //     let guessedNum = Math.floor(Math.random() * 10)
+        //     result = confirm(`Your number is ${guessedNum}?`)
+        // } while (result === false)
+
+        // alert('good job')
+
+        // Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.
+
+        // const firstNum = parseInt(prompt('Enter first number'))
+        // const secondNum = parseInt(prompt('Enter second number'))
+        // let sumOdd = 0;
+        // let maxNum
+        // let minNum
+
+        // if(firstNum > secondNum) {
+        //     maxNum = firstNum
+        //     minNum = secondNum
+        // }
+        // else {
+        //     maxNum = secondNum
+        //     minNum = firstNum
+        // }
+
+        // for (let i = minNum; i <= maxNum; i++) {
+        //     if(i % 2 == 1)
+        //     sumOdd += i
+        // }
+        // document.write(`Summary of odd numbers - ${sumOdd}`)
+
+        // Задача 11. Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.
+
+        // Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).
+
+        // let sum = 0;
+        // let message;
+        // for (let i = 0; i < 3; i++) {
+        //     let randomNum = 1 + Math.floor(Math.random() * 4)
+        //     sum += 10 ** randomNum
+        //     document.write(`<img style = 'width: 140px' src="pic-${randomNum}.jpeg">`)
+        // }
+        // switch (sum) {
+        //     case 30: message = 'you won 100$'
+        //         break;
+        //     case 300: message = 'you won 200$'
+        //         break;
+        //     case 3000: message = 'you won 500$'
+        //         break;
+        //     case 30000: message = 'you won 1000$'
+        //         break;
+
+        //     default: message = 'you lost'
+        //         break;
+        // }
+        // document.write(`<br>${message}`)
+
+        // 13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.
+
+        // alert('The field is 5*5. You have 3 attempts.')
+
+        // let rowNum = 5
+        // let columnNum = 5
+
+        // const rowComp = 1 + Math.floor(Math.random() * rowNum)
+        // const columnComp = 1 + Math.floor(Math.random() * columnNum)
+
+        // for (let i = 0; i < 3; i++) {
+        //     let rowUser = parseInt(prompt('Choose the row number?'))
+        //     let columnUser = parseInt(prompt('Choose the column number?'))
+        //     if(rowComp === rowNum && columnComp === columnNum) {
+        //     alert('you won')
+        //     break
+        //     }
+        //     else alert('try one more time')
+        // }
+
+        // 14. Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести).
+
+        // let moneyToPay = 1000
+
+        // do {
+        //     alert(`You have to pay ${moneyToPay}$`)
+        //     let userMoney = parseFloat(prompt('Enter the amount of money'))
+        //     moneyToPay = moneyToPay - userMoney
+        // } while (moneyToPay > 0);
+
+        // // if(moneyToPay < 0)
+        // //  alert(`your change is ${-moneyToPay}`)
+
+        // alert('Thank you')
+
+        // Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.
+
+        // let temperatureIndex = 0
+        // const month = 12
+
+        // for (let i = 0; i < month; i++) {
+        //     let userTempIndex = parseFloat(prompt('Enter temperature deegres'))
+        //     temperatureIndex += userTempIndex
+        // }
+
+        // const averageTemp = temperatureIndex / month
+        // alert(`Your average temperature is ${averageTemp}`)
+
+        // Задача 16. Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести величину прибутку протягом кожного окремого тижня.
+
+        // const amountOfWeeks = parseInt(prompt('How many weeks?'))
+
+        // const oneWeek = 7
+        // let totalIncome = 0
+
+        // for (let i = 1; i <= amountOfWeeks; i++) {
+        //     let oneWeekIncome = 0
+        //     for (let j = 1; j <= oneWeek; j++) {
+        //         let oneDayIncome = parseFloat(prompt(`Enter your income for ${j} day of ${i} week`))
+        //         oneWeekIncome += oneDayIncome
+        //     }
+        //     document.write(`Your ${i} week income is ${oneWeekIncome} <br>`)
+        //     totalIncome += oneWeekIncome
+        // }
+        // document.write(`Your total incom for ${amountOfWeeks} weeks is ${totalIncome}`)
+
+    </script>
+</body>
+</html>

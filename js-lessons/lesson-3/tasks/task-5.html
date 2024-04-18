@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+    </p>
+    <script>
+        // 1. Вводимо необхідні данні
+        const driverCategory = prompt('What is your driver category?');
+        let result;
+
+        // 2. Знаходимо та виводимо результат
+        switch(driverCategory.toLowerCase()) {
+            case 'a': result = 'А-мотоцикл';
+            break;
+            case 'b': result = 'В-легковий автомобіль';
+            break;
+            case 'c': result = 'С-вантажний автомобіль';
+            break;
+            default: result = 'Не можете керувати'
+        }
+        document.write(result)
+
+    </script>
+</body>
+
+</html>

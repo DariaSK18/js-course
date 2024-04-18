@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+    </p>
+    <script>
+        // 1. Вводимо необхідні данні
+        const lengthCm = parseFloat(prompt('Enter the length in centimeters.'))
+
+        // 2. Знаходимо результат
+        const lengthMeters = lengthCm / 100
+        const lengthKm = lengthCm / 100000
+
+
+        // 3. Виводимо результат
+        document.write(`${lengthCm} centimeters equals ${lengthMeters} meters and ${lengthKm} kilometers`)
+    </script>
+</body>
+
+</html>
