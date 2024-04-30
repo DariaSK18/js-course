@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        Створити окремі функції, які переводять:
+        1-Сантиметри у дюйми;
+        2-Кілограми у фунти;
+        3-Кілометри у милі.
+    </p>
+    <script>
+       function convertCmToInch(userLength) {
+        return (userLength / 2.54).toFixed(3)
+       }
+       const getUserCm = parseFloat(prompt('Enter your amount of CM'))
+       document.write(`${getUserCm} CM equal ${convertCmToInch(getUserCm)} inches <br>`)
+
+       function convertKgToLbs(userWeight) {
+        return (userWeight * 2.205).toFixed(3)
+       }
+       const getUserKg = parseFloat(prompt('Enter your amount of Kg'))
+       document.write(`${getUserKg} KG equal ${convertKgToLbs(getUserKg)} lbs <br>`)
+
+       function convertKmToMiles(userKm) {
+        return (userKm / 1.609).toFixed(3)
+       }
+       const getUserKm = parseFloat(prompt('Enter your amount of Kilometers'))
+       document.write(`${getUserKm} KM equal ${convertKmToMiles(getUserKm)} miles <br>`)
+    </script>
+</body>
+
+</html>
