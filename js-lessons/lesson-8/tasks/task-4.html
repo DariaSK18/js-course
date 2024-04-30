@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які : <br>
+        •	починаються на букву «А»; <br>
+        •	перша і остання літери співпадають; <br>
+        •	складаються з більше ніш 5 символів;
+    </p>
+    <script>
+        const registrationPlates = ['AX06EPF', 'CV56EGN', 'BJ01EPN', 'CV78MKN', 'AXA']
+
+        function getAmountRegPlateStartsA(regPlateArray) {
+            let countPlateStartsA = 0
+            for (let i = 0; i < regPlateArray.length; i++) {
+                if(regPlateArray[i].startsWith('A'))
+                countPlateStartsA++         
+            }
+            return countPlateStartsA
+        }
+
+        function getRegPlateSameStartAndEnd(regPlateArray) {
+            let countSameStartAndEnding = 0
+            for (let i = 0; i < regPlateArray.length; i++) {
+                if(regPlateArray[i].charAt(0) === regPlateArray[i].charAt(regPlateArray[i].length -1))
+                countSameStartAndEnding++
+            }
+            return countSameStartAndEnding
+        }
+
+        function getAmountLongRegPlate(regPlateArray) {
+            let countLongRegPlate = 0
+            for (let i = 0; i < regPlateArray.length; i++) {
+                if(regPlateArray[i].length > 5)
+                countLongRegPlate++                
+            }
+            return countLongRegPlate
+        }
+
+        document.write(`Registraition plates: ${registrationPlates}<br> Amount of registraition plates starts with "A": ${getAmountRegPlateStartsA(registrationPlates)}<br> Amount of registraition plates starts and ends with same letter: ${getRegPlateSameStartAndEnd(registrationPlates)}<br> Amount of registraition plates contains more than 5 symbols: ${getAmountLongRegPlate(registrationPlates)}`)
+    </script>
+</body>
+
+</html>

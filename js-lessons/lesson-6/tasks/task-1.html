@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 1</h1>
+    <p>
+        Вивести на екран <br>
+        A B C D E <br>
+        B C D E F <br>
+        C D E F G <br>
+        D E F G H <br>
+        E F G H I <br>
+        =============
+        
+    </p>
+    <script>
+for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < 5; i++) {
+            document.write(String.fromCharCode(i+j+65, 32))
+        }
+        document.write('<br>')
+}
+       
+    </script>
+</body>
+
+</html>
