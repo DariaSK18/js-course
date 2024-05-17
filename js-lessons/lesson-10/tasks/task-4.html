@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000) <br>
+        4: Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+    </p>
+    <script>
+        function createArrayRandomPrices(minPrice, maxPrice, periodOfMonthes) {
+            let array = []
+                for (let i = 0; i < periodOfMonthes; i++) {
+                    let randomPrice = minPrice + Math.floor(Math.random() * (maxPrice - minPrice) + 1)
+                    array.push(randomPrice)
+                }
+                return array
+            }
+
+        let bonds = createArrayRandomPrices(1, 10000, 12)
+        document.write(`${bonds} <br>`)
+
+        let maxPrice = 0
+        for (const item of bonds) {
+            if(item > maxPrice)
+            maxPrice = item
+        }
+        document.write(`Max price is ${maxPrice} <br>`)
+
+        let newPricesPercents = bonds.map(
+            (element) => (element / maxPrice * 100).toFixed(2) + '%'
+        )
+
+        document.write(`${newPricesPercents} <br>`)
+
+    </script>
+</body>
+
+</html>
