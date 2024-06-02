@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 1</h1>
+    <p>
+        Описати масив об’єктів – сайтів розроблених компанією з такими властивостями <br>
+        ----- Властивості ------<br>
+        - назва компанії на час розробки (назву періодично змінюють)<br>
+        - власник компанії<br>
+        - споснсори (масив спонсорів)<br>
+            * прізвище спонсора<br>
+            * ім’я  спонсора<br>
+            * сума вкладень спонсора<br>
+        - рік випуску<br>
+        - вартість сайту<br>
+        Знайти:<br>
+        1: загальну вартість усіх сайтів<br>
+        2: кількість сайтів, що було зроблено між 2000 та 2009 рр.<br>
+        3: кількість сайтів, де сума спонсорських вкладень була більшою за 100000<br>
+        4: створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)<br>
+        5: знайти рік, коли прибуток був найбільшим<br>
+        6: упорядкувати список за спаданням прибутку<br>
+        7: Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+    </p>
+    <script>
+        let webSiteArray = [
+            {
+                companyName: 'company1',
+                companyOwner: 'Jack Ashfield',
+                companySponsors: [
+                    {
+                        surname: 'Kraus',
+                        name: 'Otto',
+                        sumOfInvestments: 4500780
+                    },
+                    {
+                        surname: 'Brandy',
+                        name: 'Megan',
+                        sumOfInvestments: 20000
+                    },
+                    {
+                        surname: 'Flora',
+                        name: 'Lucy',
+                        sumOfInvestments: 20560
+                    }
+                ],
+                issueYear: 2023,
+                webSiteCost: 130000
+            },
+            {
+                companyName: 'company1',
+                companyOwner: 'Jack Ashfield',
+                companySponsors: [
+                    {
+                        surname: 'Kraus',
+                        name: 'Otto',
+                        sumOfInvestments: 4300
+                    },
+                    {
+                        surname: 'Brandy',
+                        name: 'Megan',
+                        sumOfInvestments: 20000
+                    },
+                    {
+                        surname: 'Flora',
+                        name: 'Lucy',
+                        sumOfInvestments: 200
+                    }
+                ],
+                issueYear: 2013,
+                webSiteCost: 130
+            },
+            {
+                companyName: 'company1',
+                companyOwner: 'Jack Ashfield',
+                companySponsors: [
+                    {
+                        surname: 'Kraus',
+                        name: 'Otto',
+                        sumOfInvestments: 450700
+                    },
+                    {
+                        surname: 'Brandy',
+                        name: 'Megan',
+                        sumOfInvestments: 2000
+                    },
+                    {
+                        surname: 'Flora',
+                        name: 'Lucy',
+                        sumOfInvestments: 200560
+                    }
+                ],
+                issueYear: 2003,
+                webSiteCost: 1877
+            }
+        ]
+
+        function getInfo(array, yearStart, yearEnd, amountOfInvestment) {
+            let priceForAllWebs = webSiteArray.reduce((prevSum, el) => el.webSiteCost + prevSum, 0)
+            
+            let countWebsInRange = 0
+            array.forEach(element => {
+                if(element.issueYear > yearStart && element.issueYear < yearEnd) countWebsInRange++
+            })
+
+            let countWebsByInvestments = 0
+            for (const item of array) {
+                let amount = item.companySponsors.reduce((prevSum, el) => el.sumOfInvestments > amountOfInvestment ? prevSum + 1 : prevSum, 0)
+                countWebsByInvestments += amount
+            }
+
+            let arrOfSponsors = []
+            // let arr = array.map((el) => el.companySponsors.map((item) => `${item.name} ${item.surname}`))
+            // let arrOfSponsors = arr.flat()
+            // for (let i = 0; i < array.length; i++) {
+            //     array[i].companySponsors.forEach(el => arrOfSponsors.push(el))
+            // }
+            array.map(item => item.companySponsors.forEach(el => arrOfSponsors.push(JSON.stringify(el))))
+        
+            let income = 0
+            let year = 0
+            array.forEach(el => {
+                if(el.webSiteCost > income) {
+                    income = el.webSiteCost
+                    year = el.issueYear
+                }
+            })
+
+            webSiteArray.sort((a, b) => a.webSiteCost - b.webSiteCost)
+            let websitesCostLessThan10000 = webSiteArray.filter((el) => el.webSiteCost < 10000)
+            let websitesCostMoreThan10000 = webSiteArray.filter((el) => el.webSiteCost > 10000)
+            console.log(webSiteArray)
+            console.log(websitesCostLessThan10000)
+            console.log(websitesCostMoreThan10000)
+            
+
+            return document.write(`Price for all websites: ${priceForAllWebs}<br> Amount of websites between ${yearStart} and ${yearEnd}: ${countWebsInRange}<br> Amount of websites with investments more than ${amountOfInvestment}: ${countWebsByInvestments}<br> List of sponsors: ${arrOfSponsors}<br> The year of biggest income: ${year}<br> To watch sorted list and copies of objects use 'console.log(webSiteArray)', 'console.log(websitesCostLessThan10000)', 'console.log(websitesCostMoreThan10000)'`)
+        }
+
+        document.write(getInfo(webSiteArray, 2000, 2009, 100000))
+
+    </script>
+</body>
+
+</html>
