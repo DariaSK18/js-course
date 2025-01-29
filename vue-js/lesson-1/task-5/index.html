@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Lesson-1</title>
+</head>
+<body>
+  <div>
+    <a href="task-5/index.html"></a><h3>Задача 5</h3></a>
+    <p>Додаток містить масив об’єктів (логін, пароль) -  інсуючі логіни і паролі. Користувач вводить логін і пароль, а програма повідомляє чи може користувач бути авторизованим (чи є він одним з масиву).</p>
+</div>
+<br>
+<div id="app">
+    <label>
+        Login:
+        <input type="text" v-model="enteredLogin">
+    </label><br>
+    <label>
+        Password:
+        <input type="text" v-model="enteredPassword">
+    </label><br>
+    <button @click="logInToSite">go</button> 
+</div>
+
+<script>
+  const usersList = [
+    {
+      login: 'aaa',
+      password: '111'
+    },
+    {
+      login: 'bbb',
+      password: '222'
+    },
+    {
+      login: 'ccc',
+      password: '333'
+    },
+  ]
+
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          enteredLogin: null,
+          enteredPassword: null,
+          loginIndex: null,
+          passwordIndex: null
+        }
+      },
+      methods: {
+        logInToSite(){
+          return ((this.checkLogin === true && this.checkPassword === true) && (this.loginIndex === this.passwordIndex)) ? alert('You logged in successfully!') : alert(`User doesn't exist.`)
+        }
+      },
+      computed: {
+        checkLogin(){
+          this.loginIndex = usersList.findIndex(el => el.login === this.enteredLogin)
+          return usersList.some(el => el.login === this.enteredLogin)
+        },
+        checkPassword(){
+          this.passwordIndex = usersList.findIndex(el => el.password === this.enteredPassword)
+          return usersList.some(el => el.password === this.enteredPassword)
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>
