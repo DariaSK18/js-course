@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+    <style>
+      .border{
+        border: 3px, solid, grey;
+      }
+      .green {
+        background-color: green;
+      }
+      .orange{
+        background-color: orange;
+      }
+      .red{
+        background-color: red;
+      }
+      .full-energy::after{
+        content: '🔋';
+      }
+      .half-energy::after{
+        content: '🫤';
+      }
+      .low-energy::after{
+        content: '🪫';
+      }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <label :class="energyIcon">
+      Energy level
+      <input :class="['border', energyColor]" v-model.lazy="percentsOfEnergy">
+    </label>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        percentsOfEnergy: null
+      }
+    },
+    computed: {
+      energyColor(){
+        if(this.percentsOfEnergy && this.percentsOfEnergy > 80) return 'green'
+        if(this.percentsOfEnergy && this.percentsOfEnergy >= 30 && this.percentsOfEnergy <= 80) return 'orange'
+        if(this.percentsOfEnergy && this.percentsOfEnergy < 30) return 'red'
+      },
+      energyIcon(){
+        if(this.percentsOfEnergy && this.percentsOfEnergy > 80) return 'full-energy'
+        if(this.percentsOfEnergy && this.percentsOfEnergy >= 30 && this.percentsOfEnergy <= 80) return 'half-energy'
+        if(this.percentsOfEnergy && this.percentsOfEnergy < 30) return 'low-energy'
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 2</title>
+    <style>
+      .warning-text{
+        color: orange;
+      }
+      .shadow{
+        text-shadow: 1px 1px 3px white;
+      }
+      .bcg-settings{
+        width: 300px;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .business-bcg{
+        background: url('img/plane.webp') 100% center no-repeat;
+      }
+      .clouds-bcg{
+        background: url('img/clouds.webp') 100% center no-repeat;
+      }
+    </style>
+</head>
+<body>
+ <div>
+  <p>З випадаючого списку вибираємо клас квитка у літаку. Якщо:</p>
+        <ul>
+            <li>бізнес -  виводимо елементи для вибору газети та коньяку (якщо вибрано коньяк, то запропонувати закуску (так/ні)), на фоні зображення бізнес кают </li>
+            <li>економ – виводимо елементи для вибору типу пива і чипсів, на фоні хмарки.</li>
+ </div>
+
+<div id="app">
+    <label for="ticket-class">
+      Choose the class of your ticket
+    </label>
+    <select id="ticket-class" v-model="ticketClass">
+      <option value="business">
+        Business
+      </option>
+      <option value="economy">
+        Economy
+      </option>
+    </select>
+    <div :class="[isBcgNeeded, {
+      'business-bcg':isBusiness,
+      'clouds-bcg':isEconomy
+    }]">
+      <div v-if="isBusiness">
+        <select id="businessOpts" v-model="businessOpts">
+          <option value="newspaper">
+            Newspaper
+          </option>
+          <option value="cognac">
+            Cognac
+          </option>
+        </select><br>
+        <label class="shadow" for="businessOpts" v-show="isCognac">Would you like some snacks?</label><br>
+        <select id="businessOpts" v-show="isCognac">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div v-else-if="isEconomy">
+        <select id="economyOpts">
+          <option value="beer">
+            Beer
+          </option>
+          <option value="crisps">
+            Crisps
+          </option>
+        </select>
+      </div>
+      <div class="warning-text" v-else>Please choose your ticket class first </div>
+    </div>
+</div>
+
+<script>
+
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          ticketClass: null,
+          businessOpts: null,
+        }
+      },
+      computed: {
+        isBcgNeeded() {
+          if(this.ticketClass) return 'bcg-settings'
+        },
+        isBusiness(){
+          return this.ticketClass === 'business'
+        },
+        isEconomy(){
+          return this.ticketClass === 'economy'
+        },
+        isCognac(){
+          return this.businessOpts === 'cognac'
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

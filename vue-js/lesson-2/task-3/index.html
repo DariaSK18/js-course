@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 3</title>
+    <style>
+      .card{
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+      }
+      .black-border{
+        border: 3px solid black;
+      }
+      .green-border{
+        border: 3px solid green;
+      }
+      .red-border{
+        border: 3px solid red;
+      }
+    </style>
+</head>
+<body>
+ <div>
+  <p>Елемент тренажера англійської. Виводимо зображення елемента і слово. Користувач вводить відповідь. Якщо:</p>
+        <ul>
+            <li>вірно – відтворюємо фразу «Добре. Молодець!» (і додаємо зелену рамку до елемента)</li>
+            <li>ні - то відтворюємо фразу «Невірно, спробуйте ще раз» (і додаємо червону рамку).</li>
+        </ul>
+ </div>
+
+<div id="app">
+  <div :class="['card', {
+    'black-border':!translatedWord,
+    'green-border':isCheckedWordTranslation,
+    'red-border':!isCheckedWordTranslation && translatedWord,
+  }]">
+      <img :width='320' :height="250" :src="currentCard.wordImg" :alt="currentCard.engWord">
+      <h3>{{currentCard.engWord}}</h3>
+      <label>Translate the word</label>
+      <input type="text" v-model.lazy="translatedWord">
+      <button @click="isCheckedWordTranslation">Check</button>
+      <div v-show="translatedWord">
+        <div v-if="isCheckedWordTranslation">
+          Good job!
+        </div>
+        <div v-else>Wrong! Try one more time!</div>
+      </div>
+  </div>
+</div>
+
+<script>
+const vocabularyList = [
+    {
+      engWord: 'Mirror',
+      ukrWord: 'Дзеркало',
+      wordImg: 'https://cdn.shopify.com/s/files/1/1376/0721/files/framed-mirrors_480x480.jpg?v=1693294551'
+    },
+    {
+      engWord: 'Table',
+      ukrWord: 'Стіл',
+      wordImg: 'https://images.pickawood.com/gfx/conf/tables/new/berlin-et-kernbuche-natur-geoelt-swiss-legn.jpg'
+    },
+    {
+      engWord: 'Love',
+      ukrWord: 'Кохання',
+      wordImg: 'https://media.istockphoto.com/id/1439973042/vector/red-heart-flat-icon-the-symbol-of-love-vector-illustration.jpg?s=612x612&w=0&k=20&c=i2vL1DR3XaqPcLAUBiaQzeQOj8uqksXED6wI66MO3h0='
+    },
+    {
+      engWord: 'Money',
+      ukrWord: 'Гроші',
+      wordImg: 'https://live.staticflickr.com/65535/17123251389_80282733ce_z.jpg'
+    },
+    {
+      engWord: 'Home',
+      ukrWord: 'Дім',
+      wordImg: 'https://media.istockphoto.com/id/1255835530/photo/modern-custom-suburban-home-exterior.jpg?s=612x612&w=0&k=20&c=0Dqjm3NunXjZtWVpsUvNKg2A4rK2gMvJ-827nb4AMU4='
+    },
+    {
+      engWord: 'Book',
+      ukrWord: 'Книга',
+      wordImg: 'https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_640.jpg'
+    },
+  ]
+    const { createApp } = Vue
+
+    createApp({
+      data() {
+        return {
+          translatedWord: null,
+        }
+      },
+      computed: {
+        currentCard(){
+          let randomIndex = Math.floor(Math.random() * vocabularyList.length)
+          return vocabularyList[randomIndex]
+        },
+        isCheckedWordTranslation(){
+          return this.translatedWord === this.currentCard.ukrWord
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+</head>
+<body>
+
+<div id="app">
+    <label>
+      Enter amount of your money
+      <input v-model.number.lazy="userMoney"> 
+    </label><br>
+    <label>
+      Enter price of product
+      <input v-model.number.lazy="productPrice">
+    </label>
+      <div v-if="!productPrice && !userMoney || (productPrice > userMoney)">
+        You need to add {{productPrice - userMoney}}
+      </div>
+      <div v-else-if="(userMoney - productPrice) > 100">
+        Want to buy a gift?
+        <button @click="buyGift">Buy</button>
+      </div>
+      <div v-else="userMoney >= productPrice">
+        😊
+      </div>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        userMoney: null,
+        productPrice: null,
+        amountToAdd: null
+      }
+    },
+    methods: {
+      buyGift(){
+        return alert('Thank you!')
+      }
+    },
+    computed: {
+
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 6</title>
+    <style>
+      .box-wrapper{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+      .box-dishes{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        gap: 5px;
+        border: 1px solid grey;
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+ <div>
+  <p>На кухню поступають замовлення. Спочатку ми додаємо їх у список “Очікують на виконання”, якщо:</p>
+        <ul>
+            <li>повар береться робити — замовлення переходить у список “Виконуються”,</li>
+            <li>замовлення виконано — переходить у список “Готові до виносу”.</li>
+            <li>натиснути на “Подано” - страва зникає з таблиці</li>
+        </ul>
+ </div>
+
+<div id="app">
+  <label>
+    New dish to order
+    <input type="text" v-model.lazy="newOrder">
+    <button @click="addToList">Add to list</button>
+  </label>
+  <div class="box-wrapper">
+    <div class="box-list">
+      <h4>Waiting list</h4>
+      <div class="box-dishes" v-for="dish in waitingList">
+        {{dish}}
+        <button @click="moveToProcessList">Prepare</button>
+      </div>
+    </div>
+    <div class="box-list">
+      <h4>Preparing</h4>
+      <div class="box-dishes" v-for="dish in processingList">
+        {{dish}}
+        <button @click="moveToCompletedList">Ready</button>
+      </div>
+    </div>
+    <div class="box-list">
+      <h4>Ready</h4>
+      <div class="box-dishes" v-for="dish in completedList">
+        {{dish}}
+        <button @click="removeCookedDish">Taken</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+         waitingList: [],
+         processingList: [],
+         completedList: [],
+         newOrder: null,
+        }
+      },
+      methods: {
+        addToList(){
+          this.waitingList.push(this.newOrder)
+          this.newOrder = null
+          return this.waitingList
+        },
+        moveToProcessList(index){
+          let dish = this.waitingList.splice(index, 1)[0]
+          return this.processingList.push(dish)
+        },
+        moveToCompletedList(index){
+          let dish = this.processingList.splice(index, 1)[0]
+          return this.completedList.push(dish)
+        },
+        removeCookedDish(index){
+          return this.completedList.splice(index, 1)
+        }
+      },
+    }).mount('#app')
+  </script>
+
+</body>
+</html>
