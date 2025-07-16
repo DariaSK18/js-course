@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 6</title>
+    <style>
+        .container{
+          display: flex;
+          gap: 30px;
+          margin-bottom: 20px;
+        }
+        .box{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 300px;
+        }
+        .box div{
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 15px;
+          padding: 5px;
+        }
+        .default-style{
+          border: 2px solid black;
+        }
+        .selected{
+          background: rgba(144, 238, 144, 0.429);
+          border: 2px solid green;
+        }
+        .pairs-list{
+          display: flex;
+          gap: 20px;
+          justify-content: space-between;
+          padding: 5px;
+          align-items: center;
+          border: 2px solid black;
+          border-radius: 4px;
+          width: 615px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <div class="container">
+        <div class="box">
+          <h3>Boys</h3>
+          <div :class="['default-style', {'selected': boy.isSelected}]" v-for="(boy, index) in boysList" :key="boy.id" @click="onClick(index, boysList)">
+            {{boy.name}}
+          </div>
+        </div>
+        <div class="box">
+          <h3>Girls</h3>
+          <div :class="['default-style', {'selected': girlsList[index].isSelected}]" v-for="(girl, index) in girlsList" :key="girl.id" @click="onClick(index, girlsList)">
+            {{girl.name}}
+          </div>
+        </div>
+       </div>
+       <button style="width:630px" :disabled="!isPair" @click="pairUp">Pair up</button>
+       <h2>Selected pairs</h2>
+       <div class="pairs-list" v-for="(person, index) in selectedPair" :key="index">
+            {{person.boy}} - {{person.girl}}
+            <button @click="unPair">Delete pair</button>
+       </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+              boysList: [
+                {
+                  id: 1,
+                  name: 'Ivan',
+                  isSelected: false
+                },
+                {
+                  id: 2,
+                  name: 'Oleg',
+                  isSelected: false
+                },
+                {
+                  id: 2,
+                  name: 'Vlad',
+                  isSelected: false
+                },
+                {
+                  id: 2,
+                  name: 'Nick',
+                  isSelected: false
+                }],
+              girlsList: [
+                {
+                  id: 1,
+                  name: 'Olga',
+                  isSelected: false
+                },
+                {
+                  id: 2,
+                  name: 'Daria',
+                  isSelected: false
+                },
+                {
+                  id: 3,
+                  name: 'Luda',
+                  isSelected: false
+                },
+                {
+                  id: 4,
+                  name: 'Lena',
+                  isSelected: false
+                },
+                {
+                  id: 5,
+                  name: 'Lera',
+                  isSelected: false
+                }],
+              selectedPair: []
+            }
+          },
+          methods: {
+            onClick(index, list){
+              list.forEach(el => el.isSelected = false);
+              list[index].isSelected = true
+            },
+            pairUp(){
+              return this.selectedPair.push({
+                boy: this.isSelectedBoy.name, 
+                girl: this.isSelectedGirl.name})
+            }
+          },
+          computed: {
+             isSelectedBoy(){
+             return this.boysList.find(boy => boy.isSelected)
+            },
+            isSelectedGirl(){
+              return this.girlsList.find(girl => girl.isSelected)
+            },
+            isPair(){
+              return this.isSelectedBoy && this.isSelectedGirl
+            // }
+          }
+        }
+        }).mount('#app')
+      </script>
+</body>
+</html>
