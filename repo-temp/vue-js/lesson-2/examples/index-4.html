@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+</head>
+<body>
+
+<div id="app">
+      <div v-for="i in 3">{{getWish()}}</div>
+</div>
+
+<script>
+  const wishList = ['love', 'success', 'money', 'health', 'beauty']
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+      }
+    },
+    methods: {
+       getWish(){
+        return wishList[Math.floor(Math.random() * wishList.length)]
+       }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

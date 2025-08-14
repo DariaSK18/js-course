@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+    <style>
+      .allowed{
+        background-color: green;
+      }
+      .allowed-blue{
+        background-color: lightskyblue;
+      }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <label>
+      Enter your age
+      <input v-model.number="userAge">
+    </label>
+    <button :class="{
+      'allowed': isValidAge,
+      'allowed-blue': isValidOldAge
+    }" :disabled="!userAge && !isValidAge">Register</button>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        userAge: null
+      }
+    },
+    computed: {
+      isValidAge() {
+         return this.userAge && this.userAge >= 18 && this.userAge < 45
+      },
+      isValidOldAge(){
+        return this.userAge && this.userAge >= 45
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

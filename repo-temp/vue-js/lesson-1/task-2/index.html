@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 2</title>
+</head>
+<body>
+  <div>
+    Задача 2. Вводиться номер місяця. Автоматично виводити
+    <ul>
+      <li>рекомендований одяг (зима – пальто, літо – шорти ….)</li>
+      <li>зображення з відповідним зображенням лісу (зима – ліс зі снігом, осінь – жовтий ліс, …)</li>
+    </ul>
+  </div>
+<br>
+
+<div id="app">
+  <p style="color: red">
+    {{validValue}}
+  </p>
+    <label>
+        Enter month number:
+        <input v-model.number.lazy="monthNumber" @change="getRecommendations">
+    </label>
+    <h3>
+      Recommend to wear: {{recommendedCloth}}
+    </h3>
+    <img style="width:700px" :src="imgUrl" :alt="seasonName">
+</div>
+
+
+
+<script>
+
+   const seasonsList = [{
+        seasonName: 'Winter',
+        imgUrl: 'img/winter.jpg',
+        recommendedCloth: 'Scarf, gloves, jacket'
+      },
+      {
+        seasonName: 'Spring',
+        imgUrl: 'img/spring.webp',
+        recommendedCloth: 'Cardigan, trainers, jeans'
+      },
+      {
+        seasonName: 'Summer',
+        imgUrl: 'img/summer.jpg',
+        recommendedCloth: 'Shorts, skirt, t-shirt'
+      },
+      {
+        seasonName: 'Autumn',
+        imgUrl: 'img/fall.jpg',
+        recommendedCloth: 'Rain coat, umbrella, boots'
+      },]
+    
+    const { createApp } = Vue
+
+    createApp({
+      data() {
+        return {
+          monthNumber: null,
+          seasonName: null,
+          imgUrl: null,
+          recommendedCloth: null,
+          validValue: null
+        }
+      },
+      methods: {
+        getRecommendations() {
+          if(this.monthNumber >= 1 && this.monthNumber <= 12) {
+            const seasonName = this.theSeasonName
+            const season = seasonsList.find(el => el.seasonName.toLowerCase() === seasonName.toLowerCase())
+            if (season) {
+              this.seasonName = season.seasonName
+              this.imgUrl = season.imgUrl
+              this.recommendedCloth = season.recommendedCloth
+              this.validValue = null
+            }
+          }
+          else {
+              this.validValue = 'Enter a valid value'
+              this.seasonName = null
+              this.imgUrl = null
+              this.recommendedCloth = null
+            }
+        }
+       },
+      computed: {
+        theSeasonName() {
+          if(this.monthNumber >= 3 && this.monthNumber <= 5) return 'Spring'
+          if(this.monthNumber >= 6 && this.monthNumber <= 8) return 'Summer'
+          if(this.monthNumber >= 9 && this.monthNumber <= 11) return 'Autumn'
+          else return 'Winter'
+        }
+          }
+    }).mount('#app')
+
+    
+  </script>
+
+</body>
+</html>

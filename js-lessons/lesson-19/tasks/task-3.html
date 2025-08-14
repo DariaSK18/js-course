@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+            </p>
+            
+            <script>
+                function getAction() {
+                    let listOfOl = document.querySelectorAll('ol')
+                    for (const el of listOfOl) {
+                        let elArray = el.getElementsByTagName('li')
+                        if(elArray.length % 2 === 0) el.style.backgroundColor = 'green'
+                        else el.style.backgroundColor = 'red'
+                    }
+                    return listOfOl
+                }
+                function generateLists(amountOfLists = 5, liMin = 1, liMax = 10, elMin = 1, elMax = 100) {
+                    let container = document.createElement('div')
+                    document.body.append(container)
+                    container.style.display = 'flex'
+                    let button = document.createElement('button')
+                    button.innerText = 'Color lists'
+                    document.body.append(button)
+                    button.onclick = getAction
+                    for (let i = 0; i < amountOfLists; i++) {
+                        let list = document.createElement('ol')
+                        let amountOfLi = Math.floor(Math.random()* (liMax - liMin) + 1)
+                        for (let j = 0; j < amountOfLi; j++) {
+                            let li = document.createElement('li')
+                            let liEl = Math.floor(Math.random()* (elMax - elMin) + 1)
+                            li.innerText = liEl
+                            list.append(li)
+                        }
+                        container.append(list)
+                    }
+                    return container
+                }
+
+                window.onload = function () {
+                   
+                    generateLists()
+                }
+            </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/* ----------- FONTS ----------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap');
+
+@import url('fonts.css');
+
+/* ----------- RESET ----------- */
+
+@import url('reset.css');
+
+/* ----------- MAIN STYLE ----------- */
+
+/* ----------- consulting top block ----------- */
+
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.block-bottom,
+.block-top {
+    font-family: 'Inter';
+    color: #7D7D7D;
+    font-size: 18px;
+}
+.block-top {
+    max-width: 673px;
+    margin-bottom: 50px;
+}
+.figure {
+    width: 12px;
+    height: 12px;
+    background-color: #40DDB6;
+    display: inline-block;
+    margin-right: 6px;
+}
+.intro {
+    font-weight: 500;
+    color: #37393F;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+.block-top .title {
+    max-width: 413px;
+}
+.title {
+    font-family: 'Poppins';
+    font-size: 40px;
+    font-weight: 700;
+    color: #37393F;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.text-info {
+    margin-bottom: 20px;
+}
+.text {
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+.list {
+    margin-bottom: 43px;
+}
+.card-title,
+.item {
+    font-family: 'Poppins';
+    font-size: 20px;
+    color: #37393F;
+}
+.item {
+    background: url('../img/icons/vector.png') 0 0 / 27px no-repeat;
+    margin-bottom: 23px;
+    padding: 5px 5px 5px 35px;
+}
+.rewards {
+    margin-bottom: 37px;
+}
+.card-content {
+    background: url('../img/icons/icon-01.png') 0 0 / 39px no-repeat;
+    padding-left: 58px;
+}
+.reward-card {
+   display: inline-block;
+   border: 1px solid #E3E3E3;
+   padding: 32px;
+   margin-right: 21px;
+}
+.reward-title {
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.reward-text {
+    line-height: 1.3;
+    max-width: 185px;
+}
+.link {
+    display: inline-block;
+    background-color: #6B77E5;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 22px 27px;
+}
+
+/* ----------- consulting bottom block ----------- */
+
+.block-discover {
+    text-align: center;
+    max-width: 852px;
+    margin: 0 auto;
+    margin-bottom: 47px;
+}
+.block-pic {
+    text-align: center;
+}
+.pic-container {
+    margin-bottom: 58px;
+}
+.pic-card {
+    display: inline-block;
+    margin-right: 34px;
+    width: 384px;
+    height: 501px;
+}
+.pic-card .card-title {
+    padding-top: 525px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.calendar {
+    background: url('../img/icons/calendar.png') 0 0 / 22px no-repeat;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 24px;
+}
+.first-card {
+    background: url('../img/pic-01.jpg') 0 0 / 100% no-repeat;
+}
+.second-card {
+    background: url('../img/pic-02.jpg') 0 0 / 100% no-repeat;
+}
+.third-card {
+    background: url('../img/pic-03.jpg') 0 0 / 100% no-repeat;
+}
+.fourth-card {
+    background: url('../img/pic-04.jpg') 0 0 / 100% no-repeat;
+}
+.fifth-card {
+    background: url('../img/pic-05.jpg') 0 0 / 100% no-repeat;
+}
+.sixth-card {
+    background: url('../img/pic-06.jpg') 0 0 / 100% no-repeat;
+}
+/* ----------- euphoria top block ----------- */
+
+.block-euphoria {
+    font-family: 'Causten';
+    color: #807D7E;
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+.block-images {
+    margin-bottom: 50px;
+}
+.image-fashion {
+    height: 639px;
+    max-width: 1240px;
+    background:  url('../img/people.jpg') 610px 0 / contain no-repeat, url('../img/leaves.jpeg') 0 0 / 615px 646px no-repeat;
+    padding: 183px 0 0 74px;
+}
+.fashion-title {
+    font-family: 'Core Sans C';
+    font-size: 34px;
+    font-weight: 700;
+    color: #FFF;
+    line-height: 1.47;
+    margin-bottom: 30px;
+    max-width: 480px;
+}
+.fashion-text {
+    color: #FFF;
+    margin-bottom: 50px;
+    max-width: 430px;
+}
+.fashion-link {
+    display: inline-block;
+    color: #3C4242;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px 44px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* ----------- euphoria bottom block ----------- */
+
+.block-text-content {
+    max-width: 1219px;
+}
+.line {
+    width: 6px;
+    height: 28px;
+    background-color: #8A33FD;
+    border-radius: 10px;
+    display: inline-block;
+}
+.title-clothing,
+.marker,
+.sub-title-clothing {
+    font-family: 'Core Sans C';
+    font-weight: 600;
+}
+.title-clothing {
+    font-size: 28px;
+    color: #3C4242;
+    margin-bottom: 30px;
+    display: inline-block;
+    padding-left: 21px;
+}
+.sub-title-clothing {
+    margin-bottom: 25px;
+}
+.text-clothing {
+    margin-bottom: 20px;
+}
+
+
+.practice {
+    font-weight: 700;
+    font-size: 50px;
+    padding: 15px;
+}

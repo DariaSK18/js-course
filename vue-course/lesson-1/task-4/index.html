@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
+      }
+    </style>
+    <title>Lesson-1</title>
+</head>
+<body>
+  <div>
+    <a href="task-4/index.html"></a><h3>Задача 4</h3></a>
+    <p>“Рахунок у банку”</p>
+    <ol>
+        <li>Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.</li>
+        <li>Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+        </li>
+        <li>Можливість зарахувати суму (контролювати, щоб не була від’ємною)</li>
+        <li>Можливість зняти (щоб не можна зняти більше ніж є на рахунку)</li>
+        <li>При виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків автоматично)</li>
+        <p>При зміні суми :</p>
+        <ul>
+            <li>якщо було зняття, то суму відоражати червоним</li>
+            <li>якщо було зарахування, то суму відображати зеленим</li>
+            <li>якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим</li>
+        </ul>
+    </ol>
+</div>
+<br><br><br><br>
+
+<div id="app">
+  <p>Your available balance: <span :class="colorOfBalance">{{theAmountOfMoney}}₴</span></p>
+    <label>
+        Top up the account :
+        <input type="number" v-model.number="amountToAdd">
+    </label>
+    <button @click="addMoney">Deposit</button><br>
+    <label>
+        Withdraw from account:
+        <input type="number" v-model.number="amountToWithdraw">
+    </label>
+    <button @click="withdrawMoney">Withdraw</button>
+    <p>Service fee: {{serviceFee}}</p>
+    <hr>
+    <p :class="colorOfDollar">Balance in USD: ${{dollarExchange}}</p>
+    <p :class="colorOfEuro">Balance in EUR: €{{euroExchange}}</p>
+
+    
+</div>
+
+<script>
+  const euroRate = 43.86
+  const dollarRate = 41.85
+  const taxRate = 0.03
+
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          amountOfMoney: 0,
+          amountToAdd: null,
+          amountToWithdraw: null,
+        }
+      },
+      methods: {
+        addMoney() {
+          if(this.amountToAdd > 0){
+            this.amountOfMoney += (this.amountToAdd - this.serviceFee)
+            this.amountToAdd = 0
+            this.colorOfBalance = 'green'
+          } 
+        },
+        withdrawMoney() {
+          if(this.amountToWithdraw > 0 && (this.amountOfMoney - this.amountToWithdraw) >= 0) {
+            this.amountOfMoney = this.amountOfMoney - this.amountToWithdraw - this.serviceFee
+            this.amountToWithdraw = 0
+            this.colorOfBalance = 'red'
+          }
+          else alert('not enough money or incorrect amount')
+          }
+      },
+      computed: {
+        dollarExchange(){
+          return (this.amountOfMoney / dollarRate).toFixed(2)
+        },
+        colorOfDollar(){
+          return (this.dollarExchange < 100) ? this.colorOfDollar = 'red' : this.colorOfDollar = 'green'
+        },
+        euroExchange(){
+          return (this.amountOfMoney / euroRate).toFixed(2)
+        },
+        colorOfEuro(){
+          return (this.euroExchange < 100) ? this.colorOfEuro = 'red' : this.colorOfEuro = 'green'
+        },
+        theAmountOfMoney() {
+          return this.amountOfMoney.toFixed(2)
+        },
+        serviceFee(){
+          if(this.amountToAdd) {
+            return (this.amountToAdd * taxRate).toFixed(2)
+          }
+          if(this.amountToWithdraw) {
+            return (this.amountToWithdraw * taxRate).toFixed(2)
+          }
+        },
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

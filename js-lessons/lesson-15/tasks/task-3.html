@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Розробити клас MultChecker для перевірки таблиці множення
+            </p>
+            <script>
+                class MultChecker{
+                    constructor (numToCheck) {
+                        this.numToCheck = numToCheck
+                        this.correctAnswers = 0
+                        this.wrongAnswers = 0
+                        this.userAnswer = 0
+                        this.num2 = 0
+                    }
+                    generateNum2 () {
+                            let num2 = Math.floor(Math.random() * (10 - 1 + 1))
+                            return this.num2 = num2
+                    }
+                    generateExample () {
+                        let userAns = parseInt(prompt(`Solve the example ${this.numToCheck} * ${this.generateNum2()}`))
+                        return this.userAnswer = userAns
+                    }
+                    checkAnswer () {
+                        let isContinue = true
+                        do {
+                            if(this.generateExample() === (this.numToCheck * this.num2)) {
+                               this.correctAnswers++
+                            }
+                            else this.wrongAnswers++
+                            isContinue = confirm('Keep going?')
+                        } while (isContinue);
+                    }
+                    render () {
+                        document.write(`Correct answers: ${this.correctAnswers}<br> Wrong answers: ${this.wrongAnswers}`)
+                    }
+                }
+
+                const firstCheck = new MultChecker(2)
+                firstCheck.checkAnswer()
+                document.write(firstCheck.render())
+            </script>
+</body>
+</html>

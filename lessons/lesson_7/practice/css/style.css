@@ -1,0 +1,110 @@
+/* ---------- Fonts ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Creepster&display=swap');
+
+/* ---------- Reset ---------- */
+
+@import url('reset.css');
+
+/* ---------- Main ---------- */
+
+body {
+    font-family: 'Bitter';
+    color: rgb(59, 2, 2);
+}
+.wrapper {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.logo-img {
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo-title {
+    display: inline-block;
+    font-family: 'Creepster';
+    font-size: 52px;
+    letter-spacing: 5px;
+    text-shadow: 6px 6px 10px red;
+}
+.list {
+    text-align: center;
+}
+.item {
+    display: inline-block;
+    padding: 10px;
+    font-size: 28px;
+    margin: 0 20px;
+    box-shadow: 7px 7px 15px rgb(59, 2, 2);
+    border-radius: 13px;
+    text-shadow: 2px 2px 3px red;
+}
+.block,
+.container {
+    margin-bottom: 30px;
+}
+.main-pic {
+    border-radius: 150px;
+    width: 1100px;
+}
+.title,
+.selection {
+    font-family: 'Creepster';
+    font-size: 30px;
+    margin-bottom: 20px;
+    border-left: 5px solid red;
+    padding-left: 15px;
+}
+.text {
+    line-height: 1.3;
+}
+.products {
+    text-align: center;
+}
+.products-items {
+    display: inline-block;
+    margin: 10px;
+}
+.products-pic {
+    max-width: 300px;
+    border-bottom-left-radius: 70px;
+    border-top-right-radius: 70px;
+    opacity: 0.7;
+}
+#chosen {
+    opacity: 1;
+}
+.product-name,
+.product-price,
+.products-pic {
+    margin-bottom: 15px;
+}
+.product-button {
+    display: inline-block;
+    width: 300px;
+    padding: 10px;
+    box-shadow: inset 1px 1px 16px rgb(122, 0, 0);
+    border-radius: 40px;
+}
+.footer {
+    text-align: center;
+    outline: 1px dotted black;
+}
+.footer > p, img {
+    display: inline-block;
+    margin: 20px;
+}
+.footer > img {
+    max-width: 100px;
+    vertical-align: middle;
+}
+.footer > p {
+    text-transform: uppercase;
+}

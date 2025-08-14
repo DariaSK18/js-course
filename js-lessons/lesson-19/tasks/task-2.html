@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 2</h1>
+            <p>
+                Задача 2. Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний)), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+            </p>
+            <label for="inp1">Value 1
+                <input id="inp1" type="number"><br>
+            </label>
+            <label for="inp2">Value 2
+                <input id="inp2" type="number"><br>
+            </label>
+            <label for="inp3">Value 3
+                <input id="inp3" type="number"><br>
+            </label>
+            <label for="inp4">Value 4
+                <input id="inp4" type="number"><br>
+            </label>
+            <label for="inp5">Value 5
+                <input id="inp5" type="number">
+            </label>
+            
+            <script>
+                function fillForm(ev) {
+                    const thisEvent = ev.target
+                    let currentEvent = thisEvent
+                    let currentValue = parseFloat(thisEvent.value)
+                    if (!isNaN(currentValue)) {
+                        let nextInput = thisEvent.parentElement.nextElementSibling.getElementsByTagName('input')[0]
+                        let previousInput = thisEvent.parentElement.previousElementSibling.getElementsByTagName('input')[0]
+                        while (currentEvent !== null && nextInput !== undefined) {
+                            currentEvent = nextInput
+                            currentValue++
+                            nextInput.value = currentValue
+                            nextInput = currentEvent.parentElement.nextElementSibling.getElementsByTagName('input')[0]
+                        }
+                        currentEvent = thisEvent
+                        currentValue = parseFloat(thisEvent.value)
+                        while (previousInput !== null && previousInput !== undefined) {
+                            currentEvent = previousInput
+                            currentValue--
+                            previousInput.value = currentValue
+                            previousInput = currentEvent.parentElement.previousElementSibling.getElementsByTagName('input')[0]
+                        }
+                    }
+                }
+                // function fillForm(ev) {
+                //     const thisEvent = ev.target
+                //     let filledInput = thisEvent
+                //     let filledInputValue = parseFloat(thisEvent.value)
+                //     if(!isNaN(filledInputValue)){
+                //         while(filledInput.parentElement.nextElementSibling !== null) {
+                //             filledInput.parentElement.nextElementSibling.firstElementChild.value = parseFloat(filledInputValue) + 1
+                //             filledInput = filledInput.parentElement.nextElementSibling.firstElementChild
+                //             filledInputValue = parseFloat(filledInput.parentElement.nextElementSibling.firstElementChild.value)
+                //         //     console.log(filledInput.parentElement.nextElementSibling)
+                //         // console.log(filledInput.parentElement.nextElementSibling.firstElementChild.value = filledInputValue - 1)
+                //         }
+                //     }
+                // }
+            window.onload = function () {
+                document.body.addEventListener('input', fillForm)
+            }
+            </script>
+</body>
+</html>

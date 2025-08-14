@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 7</h1>
+    <p>
+        Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+        7: Визначати, чи усі ціни більше за 1000
+    </p>
+    <script>
+        function createArrayRandomPrices(minPrice, maxPrice, periodOfMonthes) {
+            let array = []
+                for (let i = 0; i < periodOfMonthes; i++) {
+                    let randomPrice = minPrice + Math.floor(Math.random() * (maxPrice - minPrice) + 1)
+                    array.push(randomPrice)
+                }
+                return array
+            }
+
+        let bonds = createArrayRandomPrices(1, 10000, 12)
+        document.write(`${bonds} <br>`)
+
+        let isAllPricesMoreThan1000 = bonds.every(
+            (element) => element > 1000
+        )
+
+        if(isAllPricesMoreThan1000) document.write('All the prices are more than 1000')
+        else document.write('Not all of the prices are more than 1000')
+    </script>
+</body>
+</html>

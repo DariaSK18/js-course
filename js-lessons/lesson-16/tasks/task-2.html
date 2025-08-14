@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 2</h1>
+            <p>
+                Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. 
+            </p>
+            <script>
+                class TMoney {
+                    #exchangeRate
+                    constructor(exchangeRate, amountOfMoney) {
+                        this.ExchangeRate = exchangeRate
+                        this.amountOfMoney = amountOfMoney
+                    }
+                    get ExchangeRate() {
+                        return this.#exchangeRate
+                    }
+                    set ExchangeRate(newRate) {
+                        if(newRate < 0) throw new Error('Incorrect amount')
+                        return this.#exchangeRate = newRate
+                    }
+                    addMoneyToWallet(amountToAdd) {
+                        // if(amountToAdd * this.#exchangeRate <= 0) throw new Error("s");
+                        
+                        return this.amountOfMoney += amountToAdd * this.ExchangeRate
+                    }
+                    withdrawMoney(subtractAmount) {
+                        if(subtractAmount * this.ExchangeRate > this.amountOfMoney ) throw new Error('Not enough money in the wallet')
+                       return this.amountOfMoney -= subtractAmount * this.ExchangeRate
+                    }
+                    exchangeToUAH() {
+                        return this.amountOfMoney * this.ExchangeRate
+                    }
+                    toString() {
+                        return `USD rate : ${this.ExchangeRate}<br> Amount of money in the wallet : ${this.amountOfMoney} USD <br> Amount in UAH : ${this.exchangeToUAH()}<br>`
+                    }
+                }
+
+                const wallet = new TMoney(36, 100)
+                wallet.addMoneyToWallet(1)
+                document.write(wallet.toString())
+                console.log(wallet.ExchangeRate = 43)
+                wallet.withdrawMoney(1)
+                document.write(wallet.toString())
+                
+          
+            </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 1</h1>
+    <p>
+        Знайти суми елементів у вказаній області <br>
+                1: номери рядків від 0 до половини, стовпці від 0 до половини <br>
+                2: номери рядків від 0 до половини, стовпці від половини до кінця <br>
+                3: номери рядків від половини до кінця, стовпці від 0 до половини <br>
+                4: номери рядків від половини до кінця , стовпці від половини до кінця <br>
+                5: Суму парних рядків <br>
+                6: Суму непарних стовпців <br>
+                7: У парних рядках – непарні стовпці, у непарних – парні
+    </p>
+    <script>
+        function createArrayRandomNumbers(minNum, maxNum, amountOfRows, amountOfColumns) {
+            let array = []
+            for (let i = 0; i < amountOfRows; i++) {
+                let arrayRow = []
+                for (let j = 0; j < amountOfColumns; j++) {
+                    let randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum) + 1)
+                    arrayRow.push(randomNum)
+                }
+                array.push(arrayRow)
+            }
+            return array
+        }
+
+        let array = createArrayRandomNumbers(1, 5, 4, 4)
+        console.log(array)
+
+        function getSumInRange(rowStart, rowEnd, columnStart, columnEnd, arr, stepRow = 1, stepCol = 1, func) {
+            let summary = 0
+            for (let r = rowStart; r <= rowEnd; r += stepRow) {
+                for (let c = columnStart; c <= columnEnd; c += stepCol) {
+                    if(!func || func(r, c))
+                    summary += arr[r][c]
+                }
+            }
+            return summary
+        }
+
+        let halfRows = Math.floor(array.length / 2)
+        let halfColumns = Math.floor(array[0].length / 2)
+
+        document.write(`Sum #1: ${getSumInRange(0, halfRows, 0, halfColumns, array)}<br>`)
+        document.write(`Sum #2: ${getSumInRange(0, halfRows, halfColumns + 1, array[0].length - 1, array)}<br>`)
+        document.write(`Sum #3: ${getSumInRange(halfRows + 1, array.length  - 1, 0, halfColumns, array)}<br>`)
+        document.write(`Sum #4: ${getSumInRange(halfRows + 1, array.length  - 1, halfColumns + 1, array[0].length - 1, array)}<br>`)
+        document.write(`Sum #5: ${getSumInRange(0, array.length - 1, 0, array[0].length - 1, array, 2)}<br>`)
+        document.write(`Sum #6: ${getSumInRange(0, array.length - 1, 1, array[0].length - 1, array, 1, 2)}<br>`)
+
+        // document.write(`Sum: ${getSumInRange(0, array.length - 1, 0, array[0].length - 1, array, 1, 1, (r, c) => (r % 2 === 0 && c % 2 !== 0) || (r % 2 !== 0 && c % 2 === 0))}<br>`)
+
+        function getSum(rowStart, rowEnd, columnStart, columnEnd, arr) {
+            let summary = 0
+            for (let r = rowStart; r <= rowEnd; r++) {
+                for (let c = columnStart; c <= columnEnd; c++) {
+                    if((r % 2 === 0 && c % 2 !== 0) || (r % 2 !== 0 && c % 2 === 0))
+                    summary += arr[r][c]
+                }
+            }
+            return summary
+        }
+
+        document.write(`Sum #7: ${getSum(0, array.length - 1, 0, array[0].length - 1, array)}`)
+
+
+    </script>
+</body>
+
+</html>

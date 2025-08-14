@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 5</title>
+    <style>
+        .container{
+          display: flex;
+          gap: 30px;
+        }
+        .box{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .box div{
+          border: 1px solid black;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 15px;
+          padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+          <div class="box">
+            <h3>General list</h3>
+            <div v-for="(sportsman, index) in generalSportsmenList" :key="index">
+              {{sportsman}} <button @click="onSelect(index)">➡️</button>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Selected list</h3>
+            <div v-for="(sportsman, index) in selectedSportsmenList" :key="index">
+              {{sportsman}} <button @click="onDeselect(index)">⬅️</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+              generalSportsmenList: ['John Depp', 'Sara Wik', 'Den Miro', 'Alan Woo'],
+              selectedSportsmenList: ['Olga Sich', 'Ivan Hal']
+            }
+          },
+          methods: {
+            onSelect(index){
+              // const selectedSportsman = this.generalSportsmenList.splice(index, 1)
+              // return this.selectedSportsmenList.push(selectedSportsman[0])
+              this.selectedSportsmenList.push(this.generalSportsmenList[index])
+              this.generalSportsmenList.splice(index, 1)
+            },
+            onDeselect(index){
+              const selectedSportsman = this.selectedSportsmenList.splice(index, 1)
+              return this.generalSportsmenList.push(selectedSportsman[0])
+            }
+          }
+        }).mount('#app')
+      </script>
+</body>
+</html>

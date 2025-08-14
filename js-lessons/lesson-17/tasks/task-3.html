@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Задача 3. Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+            </p>
+            <script>
+                class Reminder {
+                    static reminderRef
+                    static reminderCount = 0
+                    constructor(seconds, message) {
+                        if(Reminder.reminderRef) return Reminder.reminderRef
+
+                        this.intervalInSeconds = seconds
+                        this.eventMessage = message
+                        this.intervalTimer = this.startReminder
+                        Reminder.reminderRef = this
+                    }
+                    changeMessage(newMessage) {
+                        return this.message = newMessage
+                    }
+                    startReminder() {
+                        // function count() {
+                        //     Reminder.reminderCount++
+                        //     document.write(Reminder.reminderRef.eventMessage)
+                        //     document.write(`${Reminder.reminderCount}
+                        //     <br>`)
+                        // }
+                        // return setInterval(count, 1000)
+
+                        return this.intervalTimer = setInterval(()=> {
+                            Reminder.reminderCount++
+                            document.write(Reminder.reminderRef.eventMessage)
+                            document.write(`${Reminder.reminderCount}<br>`)
+                        }, this.intervalInSeconds * 1000)
+                    }
+                    stopReminder(){
+                        // setInterval(()=> {
+                            setTimeout(()=> {
+                            if(confirm('stop?'))
+                            clearInterval(this.intervalTimer)
+                        }, 9000)
+                        // }, this.intervalInSeconds * 2000)
+                        
+                    }
+                }
+
+                let reminder = new Reminder(2, 'hi')
+                reminder.startReminder()
+                reminder.stopReminder()
+
+                // let counter = 0
+
+                // function count() {
+                //     counter++
+                //     console.log(counter)
+                // }
+                // let a = setInterval(count, 1000)
+                // setTimeout(() => {
+                //     clearInterval(a)
+                // }, 3000)
+                
+
+            </script>
+</body>
+</html>

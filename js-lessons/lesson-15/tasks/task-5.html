@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        Розробити клас «Керівник танців»
+    </p>
+    <script>
+         let ladiesNames = ['Daria', 'Olga', 'Kate', 'Viki', 'Anny', 'Wendy', 'Lucy', 'Abby']
+         let boysNames = ['Vlad', 'Ivan', 'James', 'John', 'Andy', 'Peter', 'Oleg', 'Gleb']
+
+        class DanceClassTeamLeader {
+            constructor(ladiesNames, boysNames) {
+                this.ladiesNames = ladiesNames
+                this.boysNames = boysNames
+            }
+            getRandomNameIndex(array) {
+                return Math.floor(Math.random() * array.length)
+            }
+            getRandomGirlName() {
+                const randomIndex = this.getRandomNameIndex(this.ladiesNames)
+                return this.ladiesNames[randomIndex]
+            }
+            getRandomBoyName() {
+                const randomIndex = this.getRandomNameIndex(this.boysNames)
+                return this.boysNames[randomIndex]
+            }
+            showRandomCouple() {
+                const girl = this.getRandomGirlName(this.ladiesNames)
+                const boy = this.getRandomBoyName(this.boysNames)
+                document.write(`couple: ${girl} and ${boy}<br>`)
+            }
+            runNewCouple(timeOut) {
+                setInterval(()=> {
+                    this.showRandomCouple()
+                }, timeOut)
+            }
+        }
+
+        const couple1 = new DanceClassTeamLeader(ladiesNames, boysNames)
+        // couple1.showRandomCouple()
+        couple1.runNewCouple(2000)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 1</h1>
+            <p>
+                Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+            </p>
+            <script>
+               class FindNums {
+                    static positiveNum = 0
+                    static negativeNum = 0
+                    static specificNumCount = 0
+                // constructor(numbers) {
+                //     this.numbers = numbers
+                //     // нужно ли сохранять что то и нужен ли конструктор?
+                // }
+
+                static getPositiveNums(numbers) {
+                    numbers.forEach(el => {
+                        if (el > 0) {
+                            FindNums.positiveNum++
+                        }
+                    })
+                    return FindNums.positiveNum
+                }
+
+                static getNegativeNums(numbers) {
+                    numbers.forEach(el => {
+                        if (el < 0) {
+                            FindNums.negativeNum++
+                        }
+                    })
+                    return FindNums.negativeNum
+                }
+
+                static getSpecificNum(numbers, specificNum) {
+                    numbers.forEach(el=> {
+                        if (el === specificNum) {
+                            FindNums.specificNumCount++
+                        }
+                    })
+                    return FindNums.specificNumCount
+                }
+
+                toString(){
+                    return `Positive : ${FindNums.positiveNum}<br> Negative : ${FindNums.negativeNum}<br> Specific : ${FindNums.specificNumCount}`
+                }
+               }
+
+               let arr = [-2, 4, -4, 53, 9, -2, 0, 32, -54, 4, 6, 4]
+               let b = new FindNums(arr)
+
+               FindNums.getPositiveNums(arr)
+               FindNums.getNegativeNums(arr)
+               FindNums.getSpecificNum(arr, 4)
+               document.write(b.toString())
+                
+          
+            </script>
+</body>
+</html>

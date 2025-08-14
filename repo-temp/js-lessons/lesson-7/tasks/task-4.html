@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.
+    </p>
+    <script>
+        function getCalculationResults(calcOne, calcTwo, calcThree) {
+            document.write(`Your numbers is [${firstNum}, ${secondNum}, ${thirdNum}]<br>`)
+            document.write(`Even numbers: ${calcOne} <br>`)
+            document.write(`Positive numbers: ${calcTwo} <br>`)
+            document.write(`Numbers bigger than 100: ${calcThree} <br>`)        
+        }
+
+        function getAmountOfEvenNumbers(num1, num2, num3) {
+            let evenNumbersAmount = 0
+            for (let even = 0; even < arguments.length; even++) {
+                if(arguments[even] % 2 === 0) evenNumbersAmount++
+            }
+            return evenNumbersAmount
+        }
+
+        function getAmountOfPositiveNumbers(num1, num2, num3) {
+            let positiveNumbersAmount = 0
+            for (let positive = 0; positive < arguments.length; positive++) {
+                if(arguments[positive] > 0) positiveNumbersAmount++
+            }
+            return positiveNumbersAmount
+        }
+         
+        function getAmountOfBigNumbers(num1, num2, num3) {
+            let bigNumbersAmount = 0
+            for (let bigNum = 0; bigNum < arguments.length; bigNum++) {
+                if(arguments[bigNum] > 100) bigNumbersAmount++
+            }
+            return bigNumbersAmount
+        }
+
+        const firstNum = parseFloat(prompt('Enter the first number'))
+        const secondNum = parseFloat(prompt('Enter the second number'))
+        const thirdNum = parseFloat(prompt('Enter the third number'))
+        getCalculationResults(getAmountOfEvenNumbers(firstNum, secondNum, thirdNum), getAmountOfPositiveNumbers(firstNum, secondNum, thirdNum), getAmountOfBigNumbers(firstNum, secondNum, thirdNum))
+        
+        
+    </script>
+</body>
+
+</html>

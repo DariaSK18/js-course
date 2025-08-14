@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне
+                з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100
+                грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch
+                (для вибору зображення за номером).
+            </p>
+            <script>
+            let sum = 0;
+            let message;
+            for (let i = 0; i < 3; i++) {
+                let randomNum = 1 + Math.floor(Math.random() * 4)
+                sum += 10 ** randomNum
+                document.write(`<img style = 'width: 140px' src="pic-${randomNum}.jpeg">`)
+            }
+            switch (sum) {
+                case 30: message = 'you won 100$'
+                    break;
+                case 300: message = 'you won 200$'
+                    break;
+                case 3000: message = 'you won 500$'
+                    break;
+                case 30000: message = 'you won 1000$'
+                    break;
+
+                default: message = 'you lost'
+                    break;
+            }
+            document.write(`<br>${message}`)
+
+            </script>
+</body>
+</html>

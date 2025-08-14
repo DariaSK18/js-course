@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Задача 3. Користувач задає рік народження. Визначити кількість років користувача.
+            </p>
+            <label for="year">
+                Enter your year of Birth
+                <input id="year" type="text">
+            </label>
+            <br><button>Find out the age</button><br>
+            <label for="age">
+                Your age
+                <input id="age" type="text">
+            </label>
+            <script>
+                function showAge() {
+                    document.getElementById('age').value = 2024 - parseInt(document.getElementById('year').value)
+                }
+                
+                window.onload = function() {
+                    document.querySelector('button').onclick = showAge
+                }
+
+            </script>
+</body>
+</html>

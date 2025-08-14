@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 2</title>
+    <style>
+        .main-style{
+            width: 250px;
+            height: 8px;
+            border-radius: 30%;
+            border: 1px solid grey;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .white{
+            background-color: aqua;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .green{
+            background-color: green;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <label>
+            Enter a temperature
+            <input v-model.number.lazy="temperatureDegree">
+        </label>
+        <div class="main-style" :class="temperatureColor"></div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+                temperatureDegree: null
+            }
+          },
+          computed: {
+            temperatureColor(){
+                if(this.temperatureDegree || this.temperatureDegree === 0) {
+                    if(this.temperatureDegree <= 0) return 'white'
+                    if(this.temperatureDegree > 0 && this.temperatureDegree <= 10) return 'blue'
+                    if(this.temperatureDegree >= 11 && this.temperatureDegree <= 22) return 'green'
+                    if(this.temperatureDegree > 22) return 'red'
+                }
+            }
+          }
+        }).mount('#app')
+      </script>
+</body>
+</html>

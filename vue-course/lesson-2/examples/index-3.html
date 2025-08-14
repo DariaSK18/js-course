@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+</head>
+<body>
+
+<div id="app">
+    <label>
+      Enter your login
+      <input v-model.lazy="userLogin">
+    </label>
+    <template v-if="isRightLogin">
+      <label>
+        Enter password
+        <input type="password">
+      </label>
+      <button>Log in</button>
+    </template>
+    <p v-else-if="userLogin">Welcome, dear guest</p>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        userLogin: null,
+      }
+    },
+    methods: {
+    },
+    computed: {
+      isRightLogin(){
+        return this.userLogin === 'admin'
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

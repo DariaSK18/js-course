@@ -1,0 +1,385 @@
+/* ----------- RESET ----------- */
+
+@import url('css/reset.css');
+
+/* ----------- Main ----------- */
+
+body {
+    background: url(img/street.jpeg) 0 0 / 100% 100% no-repeat;
+}
+audio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 150px;
+}
+.wrapper {
+    overflow: clip;
+    min-height: 100%;
+}
+.container {
+    width: 100%;
+    min-height: 770px;
+    position: relative;
+    background:
+        url(img/dark-cloud.png) 450px -80px / 0 no-repeat,
+        url(img/dark-cloud.png) 1050px -110px / 0 no-repeat,
+        url(img/cloud-bright.png) 700px 0 / 30% no-repeat,
+        url(img/cloud-bright.png) 200px 0 / 30% no-repeat,
+        url(img/cloud.png) 450px -80px / 30% no-repeat,
+        url(img/sun.png) 1050px -110px / 30% no-repeat,
+        url(img/girl.png) 30% 75% / 8% no-repeat,
+        url(img/guy.png) 10% 75% / 10% no-repeat;
+    animation: cloud 2s linear 1 alternate forwards 2s;
+}
+.car {
+    min-width: 700px;
+    min-height: 235px;
+    position: absolute;
+    animation: 
+        moving 1s linear 4 alternate,
+        disappear 3s linear 1 forwards 5s;
+    bottom: 0;
+    right: 100px;
+}
+.car__smoke {
+    position: absolute;
+    top: 62px;
+    left: 88%;
+    height: 100%;
+    width: 100%;
+    background: url(img/car-smoke.png) 0 0 / 20% no-repeat;
+    opacity: 0;
+    animation: smoke 1s linear 10 alternate forwards 3.5s;
+}
+.car__siggi {
+    position: absolute;
+    top: -125px;
+    left: 28%;
+    height: 100%;
+    width: 100%;
+    background: url(img/smoke.png) 0 0 / 20% no-repeat;
+    animation: siggi 1s linear 4 forwards;
+}
+
+/* ----------- animation ----------- */
+
+@keyframes disappear {
+    0% {
+        bottom: 0;
+        right: 100px;
+    }
+    100% {
+        transform: translate(-200%);
+        bottom: 0;
+    }
+}
+@keyframes moving {
+    0% {
+        transform-origin: right bottom;
+        transform: rotate(0);
+        transform-box: fill-box;
+    }
+    100% {
+        transform-origin: right bottom;
+        transform: rotate(5deg);
+        transform-box: fill-box;
+    }
+}
+@keyframes roof {
+    0% {
+        width: 0;
+        border: 0 solid black;
+    }
+    100% {
+        width: 240px;
+        border: 1px solid black;
+    }
+}
+@keyframes cloud {
+    0% {
+        background:
+        url(img/dark-cloud.png) 450px -80px / 0 no-repeat,
+        url(img/dark-cloud.png) 1050px -110px / 0 no-repeat,
+        url(img/cloud-bright.png) 700px 0 / 30% no-repeat,
+        url(img/cloud-bright.png) 200px 0 / 30% no-repeat,
+        url(img/cloud.png) 450px -80px / 30% no-repeat,
+        url(img/sun.png) 1050px -110px / 30% no-repeat,
+        url(img/girl.png) 30% 75% / 8% no-repeat,
+        url(img/guy.png) 10% 75% / 10% no-repeat;
+    }
+    100% {
+        background:
+        url(img/dark-cloud.png) 450px -80px / 30% no-repeat,
+        url(img/dark-cloud.png) 1050px -110px / 30% no-repeat,
+        url(img/cloud-bright.png) 700px 0 / 30% no-repeat,
+        url(img/cloud-bright.png) 200px 0 / 30% no-repeat,
+        url(img/cloud.png) 450px -80px / 30% no-repeat,
+        url(img/sun.png) 1050px -110px / 30% no-repeat,
+        url(img/girl.png) 30% 75% / 8% no-repeat,
+        url(img/guy.png) 10% 75% / 10% no-repeat;
+    }
+}
+@keyframes smoke {
+    0% {
+        background: url(img/car-smoke.png) 0 0 / 20% no-repeat;
+        opacity: 0;
+    }
+    50% {
+        background: url(img/car-smoke.png) 0 0 / 20% no-repeat;
+        opacity: 0.5;
+    }
+    100% {
+        background: url(img/car-smoke.png) 0 0 / 20% no-repeat;
+        opacity: 1;
+    }
+}
+@keyframes siggi {
+    0% {
+        background: url(img/smoke.png) 0 0 / 20% no-repeat;
+    }
+    50% {
+        background: url(img/smoke.png) 0 0 / 20% no-repeat;
+        opacity: 0.5;
+    }
+    100% {
+        background: url(img/smoke.png) 0 0 / 20% no-repeat;
+        opacity: 0;
+    }
+}
+
+/* ----------- details ----------- */
+
+.car__body {
+    width: 600px;
+    height: 50px;
+    background: linear-gradient(0deg, rgba(246,214,74,1) 6%, rgba(247,215,75,1) 16%, rgba(251,222,96,1) 31%, rgba(254,229,121,1) 37%, rgba(250,223,108,1) 53%, rgba(245,208,51,1) 70%, rgba(246,211,60,1) 100%);
+    position: relative;
+    top: 50px;
+    left: 25px;
+    border-left: 5px solid darkgrey;
+    border-radius: 10px 40px 4px 0;
+}
+.car__bottom-part {
+    width: 550px;
+    height: 50px;
+    background: #f6d33c;
+    position: absolute;
+    top: 96%;
+    left: 35px;
+    transform: perspective(500px) rotateX(-20deg);
+    border-radius: 0 0 70px 70px;
+}
+.car__bottom-part::before {
+    content: 'magic';
+    width: 10px;
+    height: 10px;
+    color: #6045ac;
+    position: absolute;
+    top: -9px;
+    left: 100px;
+    font-size: 12px;
+    text-transform: capitalize;
+    font-style: italic;
+}
+.car__bottom-part::after {
+    content: '';
+    width: 350px;
+    height: 15px;
+    background: #000;
+    position: relative;
+    top: 5px;
+    left: 50px;
+    background: rgb(246,211,60);
+    background: linear-gradient(0deg, rgba(246,211,60,1) 10%, rgba(254,229,121,1) 37%, rgba(246,211,60,1) 66%, rgba(246,211,60,1) 100%);
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.18);
+}
+.car__bumper {
+    width: 45px;
+    height: 35px;
+    position: absolute;
+    top: 95%;
+    left: -9px;
+    background: darkgrey;
+    transform: perspective(100px) rotateX(-40deg) skew(10deg);
+    border-radius: 10px 0 5px 5px;
+}
+.car__body::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: darkgrey;
+    position: absolute;
+    top: 2px;
+    left: -9px;
+    border-radius: 5px 0 25px 10px;
+    transform: perspective(100px) rotateY(20deg) skew(25deg);
+}
+.car__hood {
+    width: 540px;
+    height: 10px;
+    position: relative;
+    top: -8px;
+    left: 15px;
+    border-radius: 6px;
+    transform: perspective(100px) rotateX(10deg);
+    background: linear-gradient(90deg, rgba(240,212,93,1) 15%, rgba(184,164,78,1) 29%, rgba(168,143,36,1) 46%, rgba(221,187,42,1) 92%);
+    border-left: 4px solid darkgrey;
+    z-index: -2;
+}
+.car__door {
+    width: 140px;
+    height: 85px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-radius: 20px 20px 10px 5px;
+    position: absolute;
+    top: 0;
+    left: 200px;
+}
+.car__steering-wheel {
+    width: 25px;
+    height: 50px;
+    border: 4px solid black;
+    border-radius: 50%;
+    transform: skew(10deg);
+    position: relative;
+    bottom: 190px;
+    left: 215px;
+    z-index: -1;
+}
+.car__door::before {
+    content: '';
+    width: 40px;
+    height: 3px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    left: 90px;
+    border-radius: 30%;
+}
+.car__rear-bumper {
+    width: 17px;
+    height: 37px;
+    background: darkgrey;
+    position: absolute;
+    top: -4px;
+    right: -5px;
+    border-radius: 5px 5px 100px 5px;
+}
+.car__rear-bumper::before {
+    content: '';
+    width: 35px;
+    height: 2.5px;
+    background: darkgrey;
+    position: absolute;
+    top: -15px;
+    left: -50px;
+    border-radius: 40%;
+}
+.car__roof {
+    width: 60px;
+    height: 75px;
+    background: #6045ac;
+    position: absolute;
+    bottom: 90%;
+    right: 120px;
+    transform: perspective(200px) rotateX(40deg) skew(30deg);
+    border: 1px solid black;
+}
+.car__roof::before {
+    content: '';
+    width: 0;
+    height: 25px;
+    background: #6045ac;
+    position: absolute;
+    bottom: 92%;
+    right: -4px;
+    border-radius: 30px;
+    animation: roof 2s ease-in 1 forwards 3s;
+}
+.car__front-window {
+    width: 25px;
+    height: 88px;
+    background: rgba(173, 216, 230, 0.6);
+    position: absolute;
+    bottom: 70%;
+    left: 206px;
+    transform: perspective(400px) rotateX(50deg) skew(-35deg);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.car__side-window {
+    position: absolute;
+    bottom: 98%;
+    left: 199px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 57px 58px;
+    border-color: transparent transparent rgba(173, 216, 230, 0.6) transparent;
+    border-radius: 7px;
+}
+.car__wheel--left {
+    width: 75px;
+    height: 75px;
+    background: #000;
+    border-radius: 50%;
+    padding: 8px;
+    position: relative;
+    top: 42.5px;
+    left: 57.5px;
+    border: 2px solid grey;
+}
+.car__left-arch::before {
+    content: '';
+    width: 105px;
+    height: 50px;
+    background: #000;
+    position: absolute;
+    top: 46px;
+    left: 32.5px;
+    border-radius: 30px 70px 0 70px;
+    transform: perspective(100px) rotateX(20deg) skew(20deg);
+}
+.car__disc {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background: rgb(217,163,48);
+    background: radial-gradient(circle, rgba(217,163,48,1) 8%, rgba(134,73,20,1) 79%);
+    position: relative;
+}
+.car__wheel--right {
+    width: 75px;
+    height: 75px;
+    background: #000;
+    border-radius: 50%;
+    padding: 8px;
+    position: relative;
+    top: -35px;
+    left: 450px;
+    border: 2px solid grey;
+}
+.car__right-arch::before {
+    content: '';
+    width: 105px;
+    height: 50px;
+    background: #000;
+    position: absolute;
+    top: 46px;
+    left: 430px;
+    border-radius: 40px 70px 0 0;
+    transform: skew(5deg);
+}
+.car__snoop {
+    width: 100px;
+    height: 500px;
+    background: url(img/snoop-dogg.png) 0 0 / contain no-repeat;
+    position: relative;
+    top: -267.5px;
+    left: 232.5px;
+    z-index: -1;
+}

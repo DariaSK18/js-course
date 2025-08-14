@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 8</h1>
+    <p>
+        Створити функцію, яка виводить банер, у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення, тег img повине знаходитись у середині тега a: 
+        <!-- <a> <img src=”шлях”> </a> -->
+    </p>
+    <script>
+       function showBanner(image, title, link) {
+        document.write('<div>')
+            document.write(`<a href="${link}">`)
+                document.write(`<h1> ${title} </h1>`)
+                document.write(`<img src="${image}"`)
+            document.write('</a>')
+        document.write('</div>')
+       }
+
+       const bannerPicture = 'pic-3.jpeg'
+       const bannerLinkToGoogle = 'https://www.google.com.ua/'
+
+       showBanner(bannerPicture, 'Hi there!', bannerLinkToGoogle)
+
+    </script>
+</body>
+
+</html>

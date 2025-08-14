@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 5</title>
+    <style>
+      .wrapper {
+        padding: 15px;
+      }
+      .header__top {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .header__content {
+        width: 150px;
+      }
+      .box__links{
+        display: flex;
+        gap: 15px;
+      }
+      img{
+        width: 28px;
+        height: 28px;
+      }
+      a{
+        text-decoration: none;
+      }
+      p{
+        color: black;
+      }
+    </style>
+</head>
+<body>
+ <div>
+  <p>Самостійно сформуйте масив даних та виведіть фрагмент на зразок поданого (дані не обов’язково повинні співпадати)</p>
+ </div>
+
+<div id="app">
+  <div class="wrapper">
+    <div class="box" v-for="source in sourcesList">
+      <a href="source.link" class="box__header header">
+        <div class="header__top">
+          <img :src="source.icon" alt="logo">
+          <div class="header__content">
+            <p>{{source.name}}</p>
+            <p>{{source.link}}</p>
+          </div>
+        </div>
+        <h2>{{source.title}}</h2>
+      </a>
+      <div class="box__description">
+        <p>{{source.description}}</p>
+        <div class="box__links" v-show="source.linkList">
+          <div v-for="item in source.linkList">
+            <a href="item.link">{{item.title}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sources = [
+    {
+      icon: 'icons/vue.png',
+      name: 'Vue.js',
+      title: 'Vue.js - The Progressive JavaScript Framework | Vue.js',
+      description: 'The Progressive JavaScript Framework · Approachable. Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class documentation.',
+      link: 'https://vuejs.org/',
+      linkList: [
+        {
+          title: 'Composition API: setup()',
+          link: 'https://vuejs.org/api/composition-api-setup.html'
+        },
+        {
+          title: 'Quick Start',
+          link: 'https://vuejs.org/guide/quick-start'
+        },
+        {
+          title: 'Introduction',
+          link: 'https://vuejs.org/guide/introduction'
+        },
+        {
+          title: 'Tutorial',
+          link: 'https://vuejs.org/tutorial/'
+        },
+      ]
+    },
+    {
+      icon: 'icons/w3s.png',
+      name: 'W3Schools',
+      title: 'What is Vue.js',
+      description: 'Vue.js lets you extend HTML with HTML attributes called directives. Vue.js directives offers functionality to HTML applications.',
+      link: 'https://www.w3schools.com/whatis/whatis_vue.asp',
+     },
+    {
+      icon: 'icons/mdn.png',
+      name: 'MDN Web Docs',
+      title: 'Getting started with Vue - Learn web development | MDN',
+      description: 'Vue is a modern JavaScript framework that provides useful facilities for progressive enhancement — unlike many other frameworks, you can use Vue ...',
+      link: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/Vue_getting_started',
+    },
+    {
+      icon: 'icons/git.png',
+      name: 'GitHub',
+      title: 'Vue',
+      description: 'Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. TypeScript 48.7k 8.5k.',
+      link: 'https://github.com/vuejs',
+      linkList: [
+        {
+          title: 'Vuejs/core',
+          link: 'https://github.com/vuejs/core'
+        },
+        {
+          title: 'Vuejs/create-vue',
+          link: 'https://github.com/vuejs/create-vue'
+        },
+        {
+          title: 'Vuejs/docs',
+          link: 'https://github.com/vuejs/docs'
+        },
+        {
+          title: 'Vuejs/pinia',
+          link: 'https://github.com/vuejs/pinia'
+        },
+      ]
+    },
+  ]
+    const { createApp } = Vue
+  
+    createApp({
+      computed: {
+        sourcesList(){
+          return sources
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

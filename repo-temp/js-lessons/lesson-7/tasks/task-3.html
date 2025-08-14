@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Створити окремі функції, які для 4 чисел знаходять:
+                1-суму;
+                2-добуток;
+                3-середнє арифметичне;
+                4-мінімальне значення. 
+
+            </p>
+            <script>
+            const firstNum = parseFloat(prompt('Enter the first number'))
+            const secondNum = parseFloat(prompt('Enter the second number'))
+            const thirdNum = parseFloat(prompt('Enter the third number'))
+            const fourthNum = parseFloat(prompt('Enter the fourth number'))
+
+            
+            function getSummary(num1, num2, num3, num4) {
+                return num1 + num2 + num3 + num4 
+            }
+            document.write(`${firstNum} + ${secondNum} + ${thirdNum} + ${fourthNum} = ${getSummary(firstNum, secondNum, thirdNum, fourthNum)} <br>`)
+
+            function getMultiply(num1, num2, num3, num4) {
+                return num1 * num2 * num3 * num4
+            }
+            document.write(`${firstNum} * ${secondNum} * ${thirdNum} * ${fourthNum} = ${getMultiply(firstNum, secondNum, thirdNum, fourthNum)} <br>`)
+
+            function getAverage(num1, num2, num3, num4) {
+                return (num1 + num2 + num3 + num4) / 4
+            }
+            document.write(`${firstNum} + ${secondNum} + ${thirdNum} + ${fourthNum} / 4 = ${getAverage(firstNum, secondNum, thirdNum, fourthNum)} <br>`)
+
+            function getMinValue(num1, num2, num3, num4) {
+                let minNumber = num1
+                if(minNumber > num2) minNumber = num2
+                if(minNumber > num3) minNumber = num3
+                if(minNumber > num4) minNumber = num4
+                return minNumber
+            }
+            document.write(`Min value  of ${firstNum}, ${secondNum}, ${thirdNum}, ${fourthNum} is ${getMinValue(firstNum, secondNum, thirdNum, fourthNum)}`)
+
+
+            </script>
+</body>
+</html>

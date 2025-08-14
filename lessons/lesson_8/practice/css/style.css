@@ -1,0 +1,148 @@
+/* ----------- FONTS ----------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;700&display=swap');
+
+/* ----------- RESET ----------- */
+
+@import url('reset.css');
+
+/* ----------- MAIN STYLE ----------- */
+
+body {
+    font-family: 'Edu TAS Beginner';
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 15px 0 15px;
+}
+.pic-logo {
+    width: 100px;
+    height: 80px;
+    background: url('../img/logo.png') 0 0 / 100px no-repeat;
+    vertical-align: middle;
+}
+.list,
+.items > a,
+.items,
+.pic-logo,
+.button,
+.more-info {
+    display: inline-block;
+}
+.items > a,
+.more-info,
+.button {
+    padding: 10px;
+    font-size: 28px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 170px;
+    margin: 5px 5px;
+}
+.button {
+    background-color: orange; 
+}
+.block {
+    background: url('../img/block-pic-01.jpeg') 0 0 / 100% 100% no-repeat;
+    text-align: center;
+}
+.block-bottom {
+    background: url('../img/block-pic-02.png') 0 0 / 100% 100% no-repeat fixed;
+    text-align: center;
+}
+.side-bar, 
+.central-box {
+    display: inline-block;
+    text-align: center;
+}
+.achievments {
+    margin: 0 20px;
+}
+.achievments-item {
+    font-weight: 700;
+    font-size: 22px;
+    max-width: 125px;
+    height: 80px;
+    text-align: center;
+    padding: 10px;
+    margin: 40px 0;
+    border-left: 5px solid orange;
+    border-right: 5px solid orange;
+    border-radius: 40px;  
+    background-color: rgba(255, 166, 0, 0.401);
+}
+.text {
+    font-size: 22px;
+    max-width: 700px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 166, 0, 0.401);
+    border-radius: 30px;
+    border-left: 5px solid orange;
+    border-right: 5px solid orange;
+}
+.text-main {
+    color: white;
+    font-size: 22px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.block-bottom .container .button {
+    margin-bottom: 30px;
+    width: 250px;
+}
+.card {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.card-pic {
+    margin: 0 20px 25px 0;
+}
+.card-pic > img {
+    max-width: 350px;
+}
+.card-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: white;
+}
+.card-text {
+    max-width: 320px;
+    color: white;
+}
+.footer {
+    text-align: center;
+}
+.social {
+    display: inline-block;
+    margin-right: 30px;
+    padding: 10px;
+}
+.item-twitter,
+.item-insta,
+.item-facebook {
+    display: inline-block;
+}
+.item-twitter > a {
+    height: 30px;
+    background: url('../img/twitter-logo.png') 0 0 / contain no-repeat;
+}
+.item-insta > a {
+    height: 30px;
+    background: url('../img/instagram-logo.svg') 0 0 / contain no-repeat;
+}
+.item-facebook > a {
+    height: 30px;
+    background: url('../img/facebook-logo.png') 0 0 / contain no-repeat;
+}
+.item-twitter > a,
+.item-insta > a,
+.item-facebook > a {
+    padding-left: 50px;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 20px;
+}

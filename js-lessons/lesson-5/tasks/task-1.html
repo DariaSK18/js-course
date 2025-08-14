@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 1</h1>
+    <p>
+        Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину
+        прибутку та вивести величину прибутку протягом кожного окремого тижня.
+    </p>
+    <script>
+
+        const amountOfWeeks = parseInt(prompt('How many weeks?'))
+
+        const oneWeek = 7
+        let totalIncome = 0
+
+        for (let i = 1; i <= amountOfWeeks; i++) {
+            let oneWeekIncome = 0
+            for (let j = 1; j <= oneWeek; j++) {
+                let oneDayIncome = parseFloat(prompt(`Enter your income for ${j} day of ${i} week`, 0))
+                oneWeekIncome += oneDayIncome
+            }
+            document.write(`Your ${i} week income is ${oneWeekIncome} <br>`)
+            totalIncome += oneWeekIncome
+        }
+        document.write(`Your total incom for ${amountOfWeeks} weeks is ${totalIncome}`)
+
+    </script>
+</body>
+
+</html>

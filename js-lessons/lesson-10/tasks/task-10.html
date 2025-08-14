@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 10</h1>
+    <p>
+        Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+        10: Знайти першу ціну, що більше за 1000
+    </p>
+    <script>
+        function createArrayRandomPrices(minPrice, maxPrice, periodOfMonthes) {
+            let array = []
+                for (let i = 0; i < periodOfMonthes; i++) {
+                    let randomPrice = minPrice + Math.floor(Math.random() * (maxPrice - minPrice) + 1)
+                    array.push(randomPrice)
+                }
+                return array
+            }
+
+        let bonds = createArrayRandomPrices(1, 10000, 12)
+        document.write(`${bonds} <br>`)
+
+        let firstPriceMoreThan1000 = bonds.find(
+            (element) => element > 1000
+        )
+
+        document.write(`First price what more than 1000 : ${firstPriceMoreThan1000}`)
+
+    </script>
+</body>
+</html>

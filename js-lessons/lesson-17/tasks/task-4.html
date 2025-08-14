@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Задача 4. Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми
+    </p>
+    <script>
+        class RegistrateProduct {
+            constructor(initData) {
+                Object.assign(this, initData)
+            }
+            toString(){
+                return `Name: ${this.productName}<br> Measure: ${this.measureUnit}<br> Amount: ${this.productAmount}<br> Manufacturer name: ${this.productManufacturer.name}<br> Manufacturer number: ${this.productManufacturer.number}<br> `
+            }
+        }
+
+        class ProductStorage {
+            constructor(productList) {
+                this.productDatabase = []
+                this.productList = productList
+                this.product
+            }
+
+            createProductDatabase(productList) {
+                this.productList.forEach(product => {
+                    this.product = new RegistrateProduct(product)
+                    this.productDatabase.push(this.product)
+                })
+                return this.productDatabase
+            }
+            subtractProductAmount(val, name) {
+                this.productDatabase.forEach((el) => {
+                    if(el.productName.toLowerCase() === name.toLowerCase()) {
+                    if (val <= el.productAmount) 
+                    return el.productAmount -= val
+                }})
+                
+            }
+            removeProductByName(val) {
+                return this.productDatabase.forEach((el, index) => {
+                    if(el.productName.toLowerCase() === val.toLowerCase())
+                    this.productDatabase.splice(index, 1)
+                })
+            }
+            filtrateProductByName(val) {
+                return this.productDatabase.filter((el) => el.productName.toLowerCase() === val.toLowerCase())
+            }
+            filtrateProductByBrand(val) {
+                return this.productDatabase.filter((el) => el.productManufacturer.name.toLowerCase() === val.toLowerCase())
+            }
+            toString() {
+                return `${this.productDatabase}`
+            }
+        }
+
+        let productList = [{productName: 'Milk', measureUnit: 'L', productAmount: 5, productManufacturer: {name: 'Grovendale', number: 13238}}, {productName: 'Juice', measureUnit: 'L', productAmount: 4, productManufacturer: {name: 'Grove', number: 13238}}, {productName: 'Water', measureUnit: 'L', productAmount: 6, productManufacturer: {name: 'Grovendale', number: 13238}}]
+
+        let storageDatabase = new ProductStorage(productList)
+
+        storageDatabase.createProductDatabase()
+        
+        console.log(storageDatabase.filtrateProductByName('juice'))
+        console.log(storageDatabase.filtrateProductByBrand('grovendale'))
+        console.log(storageDatabase.removeProductByName('Juice'))
+        storageDatabase.subtractProductAmount(3, 'water')
+
+        document.write(storageDatabase.toString())
+
+
+
+        // let n = ['jak', 'gaa', 'art', 'btyy']
+
+        // let res = n.sort()
+        // console.log(res);
+
+        // let a = [...productList].sort((el) =>el.productName)
+        //    a.productName - b.productName 
+        //    console.log(a.productName)
+        //    console.log(b.productName) 
+         
+        // let a = productList.map((el) => el.productName.sort())
+        // console.log(a);
+    </script>
+</body>
+
+</html>

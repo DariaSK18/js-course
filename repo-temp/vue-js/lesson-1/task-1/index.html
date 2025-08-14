@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 1</title>
+</head>
+<body>
+ <div>
+      Задача 1. Вводиться кількість пасажирів. Вивести:
+  <ul>
+    <li>скільки потрібно автобусів (кожен автобус на 20 місць)</li>
+    <li>скільки пляшок води (кожному пасажиру 2 пляшки)</li>
+    <li>скільки бутербродів (кожному пасажиру 3 бутерброди)</li>
+  </ul>
+ </div>
+
+<div id="app">
+    <label>
+        Amount of passengers :
+        <input type="number" v-model.number="passengersAmount">
+    </label>
+    <hr>
+    <!-- <label>
+        Amount of busses:
+        <input type="number" v-model.number="bussesAmount">
+    </label>
+    <hr>
+    <label>
+        Amount of bottles of water:
+        <input type="number" v-model.number="amountOfBottlesOfWater">
+    </label>
+    <hr>
+    <label>
+        Amount of sandwiches:
+        <input type="number" v-model.number="amountOfSandwiches">
+    </label> -->
+    <p>Amount of busses: {{bussesAmount}}</p>
+    <p>Amount of bottles of water: {{amountOfBottlesOfWater}}</p>
+    <p>Amount of bottles of water: {{amountOfSandwiches}}</p>
+    
+</div>
+
+<script>
+    const amountOfSeatsInBus = 20
+    const amountOfWaterPerPerson = 2
+    const amountOfSandwichesPerPerson = 3
+
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          passengersAmount: 0
+        }
+      },
+      methods: {
+        getAmountOfItemsPerPassengers(item) {
+            return this.passengersAmount * item
+        }
+      },
+      computed: {
+        bussesAmount() {
+            return Math.ceil(this.passengersAmount / amountOfSeatsInBus)
+        },
+        amountOfBottlesOfWater() {
+            return this.getAmountOfItemsPerPassengers(amountOfWaterPerPerson)
+        },
+        amountOfSandwiches() {
+            return this.getAmountOfItemsPerPassengers(amountOfSandwichesPerPerson)
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

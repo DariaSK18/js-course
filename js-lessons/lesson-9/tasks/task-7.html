@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 7</h1>
+    <p>
+        Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+    </p>
+    <script>
+        let arrPrices = [63, 1010, 7007, 33, 123, 6400, 38, 111, 1337, 12, 4]
+
+        arrPrices.forEach ((element,i,arr) => {
+            if (element > 1000) 
+            arr[i] = element * 0.7
+        })
+        document.write(arrPrices)
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+</head>
+<body>
+
+<div id="app">
+    <label>
+        Enter your age
+        <input v-model.number.lazy="userAge">
+    </label>
+    <div v-show="isAllowed">
+        You'r not allowed
+    </div>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        userAge: null,
+      }
+    },
+    computed: {
+        isAllowed(){
+            return this.userAge < 16 && this.userAge
+        }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

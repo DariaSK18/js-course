@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Задача 4. Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього атрибута).
+    </p>
+
+    <script>
+        function countClicks(event) {
+            let clickedTable = event.target
+            let tablesList = document.querySelectorAll('table')
+
+            
+           
+            for (const el of tablesList) {
+                let titleForTable = document.createElement('h3')
+                let spanForTable = document.createElement('span')
+                spanForTable.innerText = 0
+                titleForTable.innerText = `Clicks: `
+                titleForTable.append(spanForTable)
+                el.before(titleForTable)
+
+                if(clickedTable) {
+                    el.setAttribute('name', 'clicked')
+                    if(el.getAttributeNames[0] === 'clicked') el.closest('span') += 1
+                }
+            }
+        }
+
+        function getColored(event) {
+            let clickedTable = event.target
+            let tablesList = document.querySelectorAll('table')
+            let elToColor = clickedTable.closest('table')
+            for (const el of tablesList) {
+                el.style.border = '2px solid black'
+                if(clickedTable){
+                elToColor.style.border = '2px solid red'
+            }
+            }
+            
+        }
+
+        function createTable() {
+        const amountOfSizes = 3
+        let container = document.createElement('div')
+        container.style.display = 'flex'
+        document.body.append(container)
+        for (let i = 0; i < amountOfSizes; i++) {
+            let table = document.createElement('table')
+            table.addEventListener('click', getColored)
+            table.addEventListener('click', countClicks)
+            table.style.border = '2px solid black'
+            // table.style.width = '100px'
+            table.style.margin = '10px'
+            // let titleForTable = document.createElement('h3')
+            // let spanForTable = document.createElement('span')
+            // spanForTable.innerText = '0'
+            // titleForTable.innerText = `Clicks: `
+            // titleForTable.append(spanForTable)
+            
+            // table.prepend(titleForTable)
+            for (let j = 0; j < amountOfSizes; j++) {
+                let row = document.createElement('tr')
+                for (let k = 0; k < amountOfSizes; k++) {
+                    let el = document.createElement('td')
+                    let randomNum = Math.floor(Math.random()*100)
+                    el.innerText = randomNum
+                    el.style.padding = '15px'
+                    el.style.border = '1px solid black'
+                    row.append(el)
+                }
+                table.append(row)
+            }
+            container.append(table)
+        }
+        return container
+       }
+
+       window.onload = function () {
+        createTable()
+       }
+    </script>
+</body>
+
+</html>

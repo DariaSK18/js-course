@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 1</title>
+    <style>
+      .error-blue{
+        color: blue;
+      }
+      .error-red{
+        color: red;
+      }
+    </style>
+</head>
+<body>
+ <div>
+  <p>Вводимо логін і пароль. Якщо логін вірний відображаємо смайл. Якщо ні, то:</p>
+  <ul>
+      <li>якщо логін = Іван – колір повідомлення про помилку синій</li>
+      <li>якщо хтось інший, то колір повідомлення червоний</li>
+  </ul>
+ </div>
+
+<div id="app">
+    <label>
+      Enter your login
+      <input type="text" v-model.lazy="userLogin">
+    </label>
+    <label>
+      Enter your password
+      <input type="password" v-model.lazy="userPassword">
+    </label>
+    <div :class="errorColor" v-if="isError">
+      You have entered an invalid username or password
+    </div>
+    <div v-else-if="!isError && userLogin && userPassword">
+      <img :width="300" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png" alt="Smile">
+    </div>
+</div>
+
+<script>
+  const login = 'Ivan'
+  const password = '111'
+
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          userLogin: null,
+          userPassword: null
+        }
+      },
+      methods: {
+        
+      },
+      computed: {
+        isError(){
+          // if((this.userLogin && this.userPassword) && ((this.userLogin !== login && this.userPassword !== password) || (this.userLogin === login && this.userPassword !== password) || (this.userLogin !== login && this.userPassword === password))) return true
+          return this.userLogin && this.userPassword && (this.userLogin !== login || this.userPassword !== password)
+         },
+        errorColor(){
+          if(!this.isError) return ''
+          // if(this.userLogin !== login && this.userPassword !== password) return 'error-red'
+          // if(this.userLogin === login && this.userPassword !== password) return 'error-blue'
+          return this.userLogin === login ? 'error-blue' : 'error-red'
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+</html>

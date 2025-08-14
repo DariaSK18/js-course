@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+    </p>
+    <script>
+        function renderTable() {
+            let table = document.createElement('table')
+            for (let i = 0; i < 3; i++) {
+                let row = document.createElement('tr')
+                for (let j = 0; j < 4; j++) {
+                    let randomNum = Math.floor(Math.random()*50)
+                    let el = document.createElement('td')
+                    el.innerText = randomNum
+                    el.style.border = '1px, solid, red'
+                    row.append(el)
+                }
+                table.append(row)
+            }
+            document.body.append(table)
+        }
+    
+        window.onload = function () {
+            renderTable()
+        }
+    </script>
+</body>
+
+</html>

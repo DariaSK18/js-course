@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.
+            </p>
+            <script> 
+             function createArray(minNum, maxNum, amountOfNums) {
+            let array = []
+            for (let i = 0; i < amountOfNums; i++) {
+                let randomNum = minNum + Math.floor(Math.random() * maxNum - minNum + 1)
+                array.push(randomNum)
+            }
+                return array
+            }
+            let array = createArray(1, 100, 30)
+
+            let countOfChanged = 0
+            let countOfComparison = 0
+
+            for (let i = 1; i < array.length; i++) {
+                let curElement = array[i]
+                let prevIndex = i - 1
+                while (prevIndex >= 0 && curElement < array[prevIndex]) {
+                    array[prevIndex + 1] = array[prevIndex]
+                    prevIndex = prevIndex - 1
+                    countOfComparison++
+                }
+                array[prevIndex + 1] = curElement
+                countOfChanged++
+            }
+
+            document.write(`Amount of changes : ${countOfChanged}<br> Amount of comparisons ${countOfComparison}<br> Array: ${array}`)
+            </script>
+</body>
+</html>

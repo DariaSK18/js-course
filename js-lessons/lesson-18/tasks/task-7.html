@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 7</h1>
+    <p>
+        Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+    </p>
+<h2>Prepare for your trip!</h2>
+<h4>Your options:</h4>
+<form>
+    <label for="transport">Choose s transport</label>
+    <select name="transport" id="transport">
+        <option value="150">Car</option>
+        <option value="100">Bus</option>
+        <option value="50">Plain</option>
+    </select>
+    <fieldset>
+        <legend>Choose a meal</legend>
+        <div>
+            <input name="meal" type="checkbox" id="breakfast" value="15">
+            <label for="breakfast">Breakfast</label>
+        </div>
+        <div>
+            <input name="meal" type="checkbox" id="lunch" value="23">
+            <label for="lunch">Lunch</label>
+        </div>
+        <div>
+            <input name="meal" type="checkbox" id="dinner" value="30">
+            <label for="dinner">Dinner</label>
+        </div>
+    </fieldset>
+    <p>Choose a guide</p>
+    <input type="radio" name="guide" value="300">John
+    <input type="radio" name="guide" value="190">Jake
+    <input type="radio" name="guide" value="270">Mike
+</form>
+<hr>
+<button>Get price</button><br>
+<span>Total price:</span> <input id="total-price" type="text">
+    <script>
+        function getPrice() {
+            let chosenTransporList = document.getElementsByTagName('option')
+            let chosenMealList = document.getElementsByName('meal')
+            let chosenGuideList = document.getElementsByName('guide')
+            let sum = 0
+            for (const el of chosenTransporList) {
+                if (el.selected) sum += parseFloat(el.value)
+            }
+            for (const el of chosenMealList) {
+                if(el.checked) sum += parseFloat(el.value)
+            }
+            for (const el of chosenGuideList) {
+                if (el.checked) sum += parseFloat(el.value)
+            }
+        document.getElementById('total-price').value = sum
+            return sum
+        }
+
+        window.onload = function () {
+            document.getElementsByTagName('button')[0].onclick = getPrice
+        }
+
+
+
+        // let transportList = ['car', 'bus', 'plain']
+        // let menuList = ['breakfast', 'lunch', 'dinner']
+        // let guidesList = ['John', 'Jake', 'Mike']
+        // function render(transportList, menuList, guidesList) {
+        //     let container = document.createElement('div')
+        //     for (let i = 1; i <= 3; i++) {
+        //         let title = document.createElement('h2')
+        //         title.innerText = `Trip #${i}`
+        //         container.append(title)
+        //         let form = document.createElement('form')
+        //         let transportTitle = document.createElement('label')
+        //         transportTitle.innerText = 'Choose a transport'
+        //         transportTitle.setAttribute('for', 'transport')
+        //         form.append(transportTitle)
+        //         let innerContainer = document.createElement('select')
+        //         innerContainer.setAttribute('id', 'transport')
+        //         for (let j = 0; j < transportList.length; j++) {
+        //             let option = document.createElement('option')
+        //             option.innerText = transportList[j]
+        //             innerContainer.append(option)
+        //         }
+        //         form.append(innerContainer)
+        //         container.append(form)
+        //         let fieldset = document.createElement('fieldset')
+        //         container.append(fieldset)
+        //         let legend = document.createElement('legend')
+        //         legend.innerText = 'Choose any food'
+        //         fieldset.append(legend)
+        //         for (let k = 0; k < menuList.length; k++) {
+        //             let el = document.createElement('div')
+        //             let input = document.createElement('input')
+        //             input.setAttribute('type', 'checkbox')
+        //             input.setAttribute('id', `${menuList[k]}`)
+        //             let label = document.createElement('label')
+        //             label.innerText = `${menuList[k]}`
+        //             label.setAttribute('for', `${menuList[k]}`)
+        //             el.append(input)
+        //             el.append(label)
+        //             fieldset.append(el)
+        //         }
+        //         let guidesTitle = document.createElement('h5')
+        //         guidesTitle.innerText = 'Choose the guide'
+        //         container.append(guidesTitle)
+        //         let div = document.createElement('div')
+        //         for (let l = 0; l < guidesList.length; l++) {
+        //             let input = document.createElement('input')
+        //             input.setAttribute('type', 'radio')
+        //             input.setAttribute('value', `${guidesList[l]}`)
+        //             input.innerText = `${guidesList[l]}`
+        //             div.append(input)
+        //         }
+        //         container.append(div)
+        //     }
+        //     document.body.append(container)
+        //     return container
+        // }
+        // render(transportList, menuList, guidesList)
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Examples</title>
+</head>
+<body>
+
+<div id="app">
+  <h3>Products list</h3>
+    <label>
+      Product name
+      <input v-model.lazy="productName">
+    </label><br>
+    <label>
+      Amount
+      <input v-model.lazy="productAmount">
+    </label><br>
+    <button @click="addProduct()">Add to list</button><hr>
+    <template v-for="product in productList">
+      <ul>
+        <li>{{product.name}} - {{product.amount}}</li>
+      </ul>
+    </template>
+
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        productName: null,
+        productAmount: null,
+        productList: []
+      }
+    },
+    methods: {
+      addProduct(){
+        this.productList.push({
+          name: this.productName,
+          amount: this.productAmount
+        })
+        this.productName = null
+        this.productAmount = null
+        return productList
+      }
+    },
+  }).mount('#app')
+</script>
+</body>
+</html>

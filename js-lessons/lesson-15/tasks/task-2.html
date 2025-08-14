@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 2</h1>
+            <p>
+                Створити об’єкт «Авто».<br>
+                Поля(властивості)<br>
+                <ol>
+                    <li>Марка</li>
+                    <li>Розмір бака</li>
+                    <li>Кількість наявних літрів</li>
+                    <li>Кількість місць</li>
+                    <li>Кількість пасажирів</li>
+                </ol>  
+                Методи (дії)<br>
+                <ol>
+                    <li>Заправка на вказану кількість літрів</li>
+                    <li>Виведення кількості пасажирів</li>
+                    <li>Додавання пасажирів</li>
+                    <li>Висадка пасажирів</li>
+                </ol>
+            </p>
+            <script>
+                let car = {
+                    brand: 'bmw',
+                    tankSize: 65,
+                    availableLiter: 20,
+                    availableSeats: 5,
+                    amountOfPresentPassenger: 0,
+                    refuel: function (amountOfRefuelingLiters) {
+                        if(amountOfRefuelingLiters > (this.tankSize - this.availableLiter)) {
+                            const availableSpaceToRefuel = this.tankSize - this.availableLiter
+                            console.log(`Available space to refuel is ${availableSpaceToRefuel}L only`)
+                        }
+                        else this.availableLiter += amountOfRefuelingLiters
+                    },
+                    showAmountOfPassengers: function () {
+                        return document.write(`${this.amountOfPresentPassenger}`)
+                    },
+                    addPassengers: function (amountOfPassengersToAdd) {
+                        if(amountOfPassengersToAdd > (this.availableSeats - this.amountOfPresentPassenger)) console.log(`Available seats are ${this.availableSeats} only`)
+                        else {
+                            this.availableSeats -= amountOfPassengersToAdd
+                            this.amountOfPresentPassenger +=amountOfPassengersToAdd
+                        }
+                    },
+                    removePassengers: function (amountOfPassengersToRemove) {
+                        if(this.amountOfPresentPassenger === 0 || this.amountOfPresentPassenger < amountOfPassengersToRemove) console.log(`Don't have that many passengers. Amount of passengers are ${this.amountOfPresentPassenger}`)
+                        else {
+                        this.amountOfPresentPassenger -= amountOfPassengersToRemove
+                        this.availableSeats +=amountOfPassengersToRemove
+                        }
+                    }
+                }
+                // car.showAmountOfPassengers()
+                console.log(car)
+                car.refuel(5)
+                car.addPassengers(4)
+                console.log(car)
+                car.removePassengers(2)
+                console.log(car);
+                car.showAmountOfPassengers()
+          
+            </script>
+</body>
+</html>

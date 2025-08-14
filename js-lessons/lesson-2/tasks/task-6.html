@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 6</h1>
+    <p>
+        З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки
+    </p>
+    <script>
+        // 1. Вводимо необхідні данні
+        const amountOfFirstProduct = parseInt(prompt('Enter the amount of the first product.'))
+        const priceOfFirstProduct = parseFloat(prompt('Enter the price of the first product.'))
+
+        const amountOfSecondProduct = parseInt(prompt('Enter the amount of the second product.'))
+        const priceOfSecondProduct = parseFloat(prompt('Enter the price of the second product.'))
+
+        const amountOfThirdProduct = parseInt(prompt('Enter the amount of the third product.'))
+        const priceOfThirdProduct = parseFloat(prompt('Enter the price of the third product.'))
+
+        // 2. Знаходимо результат
+        const totalPriceFirst = amountOfFirstProduct * priceOfFirstProduct
+        const totalPriceSecond = amountOfSecondProduct * priceOfSecondProduct
+        const totalPriceThird = amountOfThirdProduct * priceOfThirdProduct
+
+        totalPrice = totalPriceFirst + totalPriceSecond + totalPriceThird
+
+
+        // 3. Виводимо результат
+        document.write(`
+            
+            <table border="1">
+            <tr>
+                <td>Products' name</td>
+                <td>Amount</td>
+                <td>Price</td>
+            </tr>
+            <tr>
+                <td>Sweets</td>
+                <td>${amountOfFirstProduct}</td>
+                <td>${totalPriceFirst}</td>
+            </tr>
+            <tr>
+                <td>Cookies</td>
+                <td>${amountOfSecondProduct}</td>
+                <td>${totalPriceSecond}</td>
+            </tr>
+            <tr>
+                <td>Chocolate</td>
+                <td>${amountOfThirdProduct}</td>
+                <td>${totalPriceThird}</td>
+            </tr>
+            <tr>
+                <td>Total price</td>
+                <td>-------</td>
+                <td>${totalPrice}</td>
+            </tr>
+             </table>
+
+            `)
+    </script>
+</body>
+</html>

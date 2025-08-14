@@ -1,0 +1,430 @@
+/* ----------- FONTS ----------- */
+
+@import url('fonts.css');
+
+/* ----------- RESET ----------- */
+
+@import url('reset.css');
+
+/* ----------- MAIN STYLE ----------- */
+
+body {
+    font-family: 'Causten';
+    font-weight: 600;
+    color: #807D7E;
+}
+.wrapper {
+    overflow: clip;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+[class*="__container"] {
+	max-width: 1270px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+
+/* ----------- Header ----------- */
+
+.header {
+    margin: 0 auto;
+}
+.header__container {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    flex-wrap: wrap;
+}
+.header__logo {
+    max-width: 92px;
+    margin-right: 163px;
+}
+.header__logo img {
+    width: 100%;
+}
+.header__input {
+    margin-right: 210px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+.input {
+    display: flex;
+    background: #F6F6F6;
+    border-radius: 8px;
+    padding: 12px 48px;
+    align-items: flex-end;
+    gap: 12px;
+}
+.input__icon {
+    max-width: 20px; 
+}
+.input__icon img {
+    width: 100%;
+}
+.input__text {
+    font-size: 18px;
+    font-weight: 500;
+}
+.header__language-selection {
+    position: relative;
+    margin-right: 60px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+.menu {
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+}
+.menu:hover .menu__list{
+    visibility: visible;
+}
+.menu__text a::after {
+    content: '';
+    width: 10px;
+    height: 5px;
+    background: url(../img/header/arrow-open.svg) center / 100% no-repeat;
+    margin-left: 19px;
+    vertical-align: middle;
+}
+.menu__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgb(245, 245, 245);
+    border-radius: 10px;
+    width: 100%;
+    visibility: hidden;
+    border: 1px solid #8A33FD;
+}
+.menu__item {
+    padding: 5px;
+    transition: color 0.3s;
+}
+.menu__item:hover {
+    color: #8A33FD;
+}
+.menu__item:not(:last-child) {
+    margin-bottom: 5px;
+}
+.header__buttons {
+    display: flex;
+    gap: 29px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+.button {
+    border-radius: 8px;
+    border: 1px solid #3C4242;
+    color: #8A33FD;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.5s;
+}
+.button a {
+    padding: 12px 48px;
+}
+.button:hover {
+    color: #FFF;
+    background: #8A33FD;
+}
+
+/* ----------- Main----------- */
+
+.main {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+/* ----------- Categories For Men ----------- */
+
+.category__container {
+    margin-bottom: 50px;
+}
+.category__sub-title {
+    margin-bottom: 70px;
+}
+.sub-title {
+    color: #3C4242;
+    font-size: 34px;
+    font-family: 'Core Sans C';
+    letter-spacing: 0.68px;
+}
+.sub-title::before {
+    content: '';
+    width: 6px;
+    height: 30px;
+    border-radius: 10px;
+    background: #8A33FD;
+    margin-right: 20px;
+    position: relative;
+    top: 3px;
+    left: 0;
+}
+.category__block {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -25px -50px -25px;
+}
+.category__item {
+    flex-basis: 25%;
+    padding: 0 25px 50px 25px;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+}
+.item__picture {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    /* overflow: hidden; */
+}
+.item__picture:hover img {
+    transform: scale(1.03);
+    border-radius: 15px;
+    box-shadow: 4px 4px 7px rgb(0, 0, 0);
+}
+.item__picture img {
+    width: 100%;
+    transition: all 0.3s;
+}
+.item__body {
+    display: flex;
+    flex-grow: 1;
+}
+.item__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.item__title {
+    flex-grow: 1;
+    color: #2A2F2F;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.56;
+}
+.item__title:not(:last-child) {
+    margin-bottom: 7px;
+}
+.item__title a{
+    transition: color 0.3s;
+}
+.item__title a:hover {
+    color: #390978;
+}
+.item__text {
+    color: #7F7F7F;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 2;
+}
+.item__arrow {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 18px;
+    min-height: 25px;
+    align-self: flex-start;
+    background: url(../img/men-clothes/arrow.svg) center no-repeat;
+    transition: all 0.3s;
+}
+.item__arrow:hover {
+    transform: scale(1.2);
+}
+
+/* ----------- Wishlist ----------- */
+
+.wishlist__container {
+    max-width: 933px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.wishlist__sub-title {
+    color: #3C4242;
+    font-size: 28px;
+    line-height: 1.19;
+    letter-spacing: 0.56px;
+    margin-bottom: 20px;
+}
+.wishlist__block {
+    display: flex;
+    flex-direction: column;
+}
+.wishlist__element {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid #EDEEF2;
+}
+.element__content {
+    display: flex;
+    flex-grow: 1;
+}
+.element__close {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 22px;
+    min-height: 22px;
+    background: url(../img/wishlist/close-cross.svg) center no-repeat;
+    transition: all 0.5s;
+}
+.element__close:hover {
+    transform: rotate(180deg);
+}
+.element__picture {
+    padding: 0 36px;
+}
+.element__picture img {
+    width: 100%;
+    transition: all 0.3s;
+}
+.element__picture img:hover {
+    box-shadow: 2px 2px 4px black;
+    border-radius: 5px;
+}
+.element__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+}
+.product-info__name,
+.product-info__color,
+.product-info__quantity {
+    color: #3C4242;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.44px;
+}
+.element__body span {
+    color: #807D7E;
+    font-weight: 500;
+}
+.product-info__name a::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #8A33FD;
+    position: relative;
+    top: 0;
+    left: 50%;
+    visibility: hidden;
+    transition: all 1s;
+}
+.product-info__name:hover a::after {
+    width: 100%;
+    left: 0;
+    visibility: visible;
+}
+.element__buy {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.element__price {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.44px;
+    
+}
+.element__button a {
+    padding: 14px 28px;
+}
+
+/* ----------- My order ----------- */
+
+.orders__container {
+    max-width: 925px;
+    padding: 0 15px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.orders__elements {
+    padding: 30px 0;
+    border-bottom: 1px solid #EDEEF2;;
+}
+.orders__info {
+    border-radius: 8px;
+    background: #F6F6F6;
+    padding: 28px 47px;
+}
+.orders__info:not(:last-child) {
+    margin-bottom: 30px;
+}
+.orders__number-title {
+    color: #3C4242;
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+.orders__details {
+    display: flex;
+    justify-content: space-between;
+}
+.orders__text {
+    color: #807D7E;
+    font-size: 14px;
+}
+.orders__text:not(:last-child) {
+    margin-bottom: 7px;
+}
+.orders__text span {
+    color: #BEBCBD;
+    font-weight: 400;
+}
+.orders__status-block {
+    text-align: end;
+}
+.orders__description {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.orders__picture {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 96px;
+}
+.orders__picture img {
+    width: 100%;
+}
+.orders__picture img:hover {
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px black;
+}
+.product-info {
+    flex-grow: 1;
+}
+.product-info__name,
+.product-info__color,
+.product-info__quantity,
+.product-info__price {
+    font-weight: 600;
+    font-size: 14px;
+}
+.product-info > :first-child {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.product-info__color:not(:last-child) ,
+.product-info__quantity:not(:last-child),
+.product-info__price:not(:last-child)  {
+    margin-bottom: 5px;
+}
+
+.orders__button a {
+    padding: 14px 28px;
+}
+
+/* ----------- Footer ----------- */
+
+.footer {
+    background: #8b33fda6;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 24px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <h1>Task 1</h1>
+        <p>
+            Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці.
+        </p>
+        <script>
+            // 1. Вводимо необхідні данні
+            let a = parseFloat(prompt('Введіть величину a'))
+            let b = parseFloat(prompt('Введіть величину b'))
+
+            // 2. Знаходимо результат
+            let addSum = a + b
+            let multSum = a * b
+            let dividSum = a / b
+
+            // 3. Виводимо результат
+            document.write(`
+            
+            <table border="1">
+            <tr>
+                <td>Операція</td>
+                <td>Результат</td>
+            </tr>
+            <tr>
+                <td>${a} + ${b}</td>
+                <td>${addSum}</td>
+            </tr>
+            <tr>
+                <td>${a} * ${b}</td>
+                <td>${multSum}</td>
+            </tr>
+            <tr>
+                <td>${a} / ${b}</td>
+                <td>${dividSum}</td>
+            </tr>
+             </table>
+
+            `)
+        </script>
+    </body>
+</body>
+
+</html>

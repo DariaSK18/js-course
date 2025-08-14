@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>task 1</title>
+</head>
+<body>
+<div id="app">
+    <label>
+        Amount in cm
+        <input v-model.number.lazy="cmAmount">
+    </label><br>
+    <label>
+        Amount in m
+        <input v-model.number.lazy="convertedToM">
+    </label><br>
+    <label>
+        Amount in km
+        <input v-model.number.lazy="convertedToKm">
+    </label>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        cmAmount: null,
+      }
+    },
+    methods:{
+        convertToM(){
+            return this.cmAmount / 100
+        },
+        convertToKm(){
+            return this.cmAmount / 100000
+        }
+    },
+    computed:{
+        convertedToM: {
+            get(){
+                return this.convertToM()
+            },
+            set(mAmount){
+                this.cmAmount = mAmount * 100
+            }
+        },
+        convertedToKm:{
+            get(){
+                return this.convertToKm()
+            },
+            set(kmAmount){
+                this.cmAmount = kmAmount * 100000
+            }
+        }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+    </p>
+    <script>
+         let namesArray = ['Vlad', 'Olga', 'Daria', 'Ivan', 'Viki', 'James', 'John', 'Andy', 'Wendy', 'Peter', 'Lucy', 'Abby']
+
+         namesArray.sort()
+         document.write(`${namesArray} <br>`)
+
+         let start = 0
+         let end = namesArray.length - 1
+         let nameSearch = 'Olga'
+         while (start <= end) {
+            let middle = Math.floor((start + end) / 2)
+            if(namesArray[middle] === nameSearch) {
+               document.write(`Index Olga's name is ${middle}`) 
+            break 
+            } 
+            if(namesArray[middle] > nameSearch) end = middle - 1
+            if(namesArray[middle] < nameSearch) start = middle + 1
+         }
+
+    </script>
+</body>
+
+</html>

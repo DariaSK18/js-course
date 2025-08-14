@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 3</title>
+    <style>
+        .amber{
+            color: orange;
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+        .blink{
+            font-size: 22px;
+            font-weight: 800;
+            color: red;
+            animation: blink 1s 0.3s infinite;
+        }
+        
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <label>
+            Enter a permitted speed limit
+            <input v-model.number.lazy="speedLimit">
+        </label><br>
+        <label :class="speedVariable">
+            Enter the current speed
+            <input :class="speedVariable" :disabled="!speedLimit" v-model.number.lazy="currentSpeed">
+        </label>
+        <hr>
+        <div class="blink" v-show="isWarningMessage">{{warningMessage}} {{speedLimit}}</div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+                speedLimit: null,
+                currentSpeed: null,
+                warningMessage: 'Be carefull! Speed limit is '
+            }
+          },
+          computed: {
+           speedVariable(){
+            const lowSpeed = this.speedLimit * 0.5
+            if(this.currentSpeed){
+                if(this.currentSpeed < lowSpeed) return 'amber'
+                if(this.currentSpeed >= lowSpeed && this.currentSpeed <= this.speedLimit) return 'green'
+                if(this.currentSpeed > this.speedLimit) return 'red'
+            }
+           },
+           isWarningMessage(){
+            const warningSpeed = this.speedLimit * 0.9
+            if(this.currentSpeed && this.currentSpeed >= warningSpeed) return this.warningMessage
+           }
+          }
+        }).mount('#app')
+      </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 1</h1>
+            <p>
+                Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+            </p>
+            <script>
+                const shootingRange = {
+                    rabbitsForShoot: [0, 1, 0, 1, 0, 0, 0, 1, 0, 1],
+                    takeAShot: function (position) {
+                        if(this.rabbitsForShoot[position - 1] === 1) alert('You won!')
+                        else alert('Better luck next time!')
+                        this.rabbitsForShoot[position - 1] = 'X'
+                    },
+                    toString() {
+                        return `Field of rabbits after a shot: ${this.rabbitsForShoot}`
+                    }
+                }
+
+                const shot = parseInt(prompt('Choose a target from 1 to 10'))
+                shootingRange.takeAShot(shot)
+                document.write(shootingRange.toString())
+
+                // Как запретить добавление новых элемнтов в массив?
+          
+            </script>
+</body>
+</html>

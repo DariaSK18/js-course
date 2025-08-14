@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Інвестор вклав  S тис. грн на 20 років під 20% річних, а потім на 17 років під 27% річних. Визначити за допомогою циклів суму, яку він одержить.
+            </p>
+            <script>
+            const amountOfInvestment = parseFloat(prompt('Enter the amount of money you want to invest'))
+            let sumOfDeposit = amountOfInvestment
+
+            for (let i = 0; i < 20; i++) {
+                sumOfDeposit = sumOfDeposit * 1.2
+            }
+            document.write(`Your summary for 20 years is ${sumOfDeposit.toFixed(2)} <br>`)
+            for (let j = 0; j < 17; j++) {
+                sumOfDeposit = sumOfDeposit * 1.27
+            }
+            document.write(`Your summary for 27 years is ${sumOfDeposit.toFixed(2)}`)
+
+            </script>
+</body>
+</html>

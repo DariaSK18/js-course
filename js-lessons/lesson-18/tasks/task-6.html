@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 6</h1>
+    <p>
+        Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+    </p>
+    <label for="grades">Amount of grades
+        <input id="grades" type="text">
+    </label><br>
+    <button id="getTable">get table</button><hr>
+    <script>
+      function renderTable() {
+        let elementsAmount = document.getElementById('grades').value
+        let table = document.createElement('div')
+        for (let i = 0; i < elementsAmount; i++) {
+            let el = document.createElement('input')
+            el.setAttribute('class', 'grades-value')
+            el.style.border = '1px, solid, blue'
+            el.style.height = '30px'
+            el.style.margin = '5px'
+            table.append(el)
+        }
+        let hr = document.createElement('hr')
+        table.append(hr)
+        let getSumBtn = document.createElement('button')
+        getSumBtn.innerText = 'get sum'
+        getSumBtn.setAttribute('id', 'getSum')
+        // getSumBtn.onclick = getSum
+        table.append(getSumBtn)
+        document.body.append(table)
+        return table
+      }
+      function getSum() {
+        let gradesValueList = document.getElementsByClassName('grades-value')
+        let sum = 0
+        for (const el of gradesValueList) {
+            sum += parseFloat(el.value)
+        }
+        sum = sum / gradesValueList.length
+        let summary = document.createElement('div').innerText = sum
+        document.body.append(`Average score : ${sum}`)
+        return sum
+      }
+
+      window.onload = function () {
+        document.getElementById('getTable').onclick = () => {
+            renderTable()
+            document.getElementById('getSum').onclick = getSum
+        }
+      }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 2</h1>
+            <p>
+                Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+            </p>
+            <script>
+                let obj = {
+                    day: 23,
+                    month: 4,
+                    year: 2024
+                }
+            
+            function identifyTheYear({month, year}, monthAmount) {
+                let newMonth = month + monthAmount
+                let newYear = year + Math.floor((month + monthAmount - 1) / 12)
+                if((newMonth % 12) === 0) newMonth = 12
+                else newMonth = (newMonth % 12)
+
+                return  document.write(`${newYear} / ${newMonth}`)
+            }
+
+            identifyTheYear(obj, 8)
+            </script>
+</body>
+</html>

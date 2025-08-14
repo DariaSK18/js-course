@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 5</h1>
+    <p>
+        Задача 5. Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає історію тестування у масиві у вигляді об'єктів  
+        Приклад.
+        testsList= [
+           {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+           {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+        ]
+        Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля. 
+        Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History.  Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.
+    </p>
+    <script>
+        class RandomNum {
+            static getRandomNum(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        } 
+        class MultiplyChecker {
+            constructor(){
+                this.firstRandomNumber = RandomNum.getRandomNum(1, 20)
+                this.secondRandomNumber = RandomNum.getRandomNum(1, 20)
+                this.operation = '*'
+                this.correctAnswer = this.firstRandomNumber * this.secondRandomNumber
+                this.userAnswer = parseInt(prompt(`${this.firstRandomNumber} * ${this.secondRandomNumber}`))
+            }
+            
+            getExampleDetails() {
+                return this
+            }
+        }
+
+        class AddChecker {
+            constructor(){
+                this.firstRandomNumber = RandomNum.getRandomNum(1, 20)
+                this.secondRandomNumber = RandomNum.getRandomNum(1, 20)
+                this.operation = '+'
+                this.correctAnswer = this.firstRandomNumber + this.secondRandomNumber
+                this.userAnswer = parseInt(prompt(`${this.firstRandomNumber} + ${this.secondRandomNumber}`))
+            }
+           
+            getExampleDetails() {
+                return this
+            }
+        }
+
+        class TestManager {
+            constructor() {
+                this.start
+                this.randomExampleIndex
+            }
+            getExample() {
+                    this.randomExampleIndex = RandomNum.getRandomNum(1, 2)
+                    if (this.randomExampleIndex === 1) return this.start = new MultiplyChecker().getExampleDetails()
+                    else return this.start = new AddChecker().getExampleDetails()
+                }
+        }
+
+        class TestingHistory {
+            static TestingHistoryRef
+            constructor(exampleAmount) {
+                if (TestingHistory.TestingHistoryRef) return TestingHistory.TestingHistoryRef
+                this.exampleAmount = exampleAmount
+                this.testList = []
+                this.objArr = []
+                this.test = new TestManager()
+
+                TestingHistory.TestingHistoryRef = this
+            }
+
+            createListOfTests(){
+                for (let i = 1; i <= this.exampleAmount; i++) {
+                this.testList.push(this.test.getExample())
+                }
+                this.testList.forEach(el => {
+                this.objArr.push({...el})})
+                return this.objArr
+            }
+            toString() {
+                return `${this.objArr[0].userAnswer}`
+            }
+        }
+
+        // let b = []
+        // let c = []
+        let a = new TestingHistory(3)
+        // let b = new TestingHistory(2) // not creating new, but you can still make new list
+        // b.push(new TestManager().getExample())
+        // b.push(new TestManager().getExample())
+        // b.push(new TestManager().getExample())
+        // b.push(new TestManager().getExample())
+        console.log(a.createListOfTests())
+        // console.log(a)
+        // console.log(b.createListOfTests())
+        // console.log(a)
+        // console.log(b)
+        
+
+        // document.write(a.toString())
+        // console.log(b)
+        // let c = new TestManager()
+        // for (let i = 0; i < 3; i++) {
+        // c.getExample()
+        // new TestManager().getExample()
+        // new TestManager().getExample()
+        // }
+        //  console.log(c)
+        //  a.testList.forEach(el => {
+        //     b.push({...el})
+        //  })
+        //  console.log(b)
+        //  b.forEach(el => {
+        //     d.push({...el})
+        //  })
+        //  console.log(d)
+        // class TestData {
+        //     constructor() {
+        //             this.start
+        //         }
+    
+        //     createObjectDetails() {
+        //         if(TestManager.randomExampleIndex === 1) {
+        //             this.start = new TestManager(new MultiplyChecker())
+        //             this.start.getExample()
+        //             return this.start
+        //             //     {
+        //             //     firstRandomNumber: this.start.firstRandomNumber,
+        //             //     secondRandomNumber: this.start.secondRandomNumber,
+        //             //     operation: this.start.operation,
+        //             //     correctAnswer: this.start.correctAnswer,
+        //             //     userAnswer: this.start.userAnswer
+        //             // }
+        //         }
+        //         else {
+        //             this.start.getExample()
+        //             return this.ob = {
+        //                 firstRandomNumber: this.start.firstRandomNumber,
+        //                 secondRandomNumber: this.start.secondRandomNumber,
+        //                 operation: this.start.operation,
+        //                 correctAnswer: this.start.correctAnswer,
+        //                 userAnswer: this.start.userAnswer
+        //             }
+        //         }
+        //     }
+        // }
+
+        
+    </script>
+</body>
+
+</html>

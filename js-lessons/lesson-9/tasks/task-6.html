@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 6</h1>
+    <p>
+        Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+    </p>
+    <script>
+        let arrRandomNum = [63, 101, -77, 33, -123, 64, -38, 111, 1337, 12, 4]
+
+        arrRandomNum.forEach((item, index, arr) => {
+            if (item > arr[0])
+            arr[index] *= 2
+        // document.write(`${item * 2}, `)
+            }
+        )
+        document.write(arrRandomNum)
+        
+    </script>
+</body>
+</html>

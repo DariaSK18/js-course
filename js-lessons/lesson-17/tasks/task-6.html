@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 6</h1>
+    <p>
+        Задача 6. Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+    </p>
+    <script>
+
+        class Book {
+            constructor(initData) {
+                Object.assign(this, initData)
+            }
+        }
+
+        class Library {
+            static LibraryRef
+            constructor() {
+                if(Library.LibraryRef) return Library.LibraryRef
+                this.libraryList = []
+                this.book
+                this.chosenBook
+                this.booksSeparatedByGenre = []
+
+                Library.LibraryRef = this
+            }
+
+            addBook(initData) {
+                this.book = new Book(initData)
+                this.libraryList.push(this.book)
+                return this.libraryList
+            }
+
+            removeBookByName(searchingName) {
+                this.libraryList.forEach((el, index) => {
+                    if(el.name === searchingName)
+                    this.libraryList.splice(index, 1)
+                })
+                return this.libraryList
+            }
+
+            chooseBookByName(searchingName) {
+                this.libraryList.forEach((el) => {
+                    if(el.name.toLowerCase() === searchingName.toLowerCase()) this.chooseBook = el
+                })
+                return this.chooseBook
+            }
+
+            chooseBookByAuthor(authorName) {
+                this.libraryList.forEach((el) => {
+                    if(el.author.surname.toLowerCase() === authorName.toLowerCase()) this.chooseBook = el
+                })
+                return this.chooseBook
+            }
+
+            chooseBookByPublisher(publisherName) {
+                this.libraryList.forEach((el) => {
+                    if(el.publisher.name.toLowerCase() === publisherName.toLowerCase()) this.chooseBook = el
+                })
+                return this.chooseBook
+            }
+
+            separateByGenre(searchingGenre){
+                this.libraryList.forEach((el) => {
+                    if(el.genre.toLowerCase() === searchingGenre.toLowerCase()) this.booksSeparatedByGenre.push(el)
+                })
+            return this.booksSeparatedByGenre
+            }
+
+        }
+
+        let library = new Library()
+
+        library.addBook({
+            author: {
+                surname: 'Silver',
+                name: 'Elsie',
+                dateOfBirth: {
+                    day: 12,
+                    month: 2,
+                    year: 1989
+                },
+                description: 'Canadian author'
+            },
+            name: 'Heartless',
+            genre: 'Detective',
+            publisher: {
+                name: 'Piatkus',
+                regNum: 12324-32992,
+                year: 2023
+            }})
+
+        console.log(library.addBook({
+            author: {
+                surname: 'Silver',
+                name: 'Elsie',
+                dateOfBirth: {
+                    day: 12,
+                    month: 2,
+                    year: 1989
+                },
+                description: 'Canadian author'
+            },
+            name: 'Heartless',
+            genre: 'Romance',
+            publisher: {
+                name: 'Piatkus',
+                regNum: 12324-32992,
+                year: 2023
+            }}))
+        console.log(library.addBook({
+            author: {
+                surname: 'Silver',
+                name: 'Elsie',
+                dateOfBirth: {
+                    day: 12,
+                    month: 2,
+                    year: 1989
+                },
+                description: 'Canadian author'
+            },
+            name: 'Flawless',
+            genre: 'Romance',
+            publisher: {
+                name: 'Piatkus',
+                regNum: 12324-32992,
+                year: 2023
+            }}))
+        // console.log(library.removeBookByName('Flawless'))
+        // console.log(library.chooseBookByPublisher('piatkus'))
+        // console.log(library.separateByGenre('detective'))
+        let library2 = new Library()
+
+        console.log(library2.addBook({
+            author: {
+                surname: 'Silver',
+                name: 'Elsie',
+                dateOfBirth: {
+                    day: 12,
+                    month: 2,
+                    year: 1989
+                },
+                description: 'Canadian author'
+            },
+            name: 'Fake',
+            genre: 'Romance',
+            publisher: {
+                name: 'Piatkus',
+                regNum: 12324-32992,
+                year: 2023
+            }}))
+        console.log(library)
+        console.log(library2)
+        // let book = new Book({
+        //     author: {
+        //         surname: 'Silver',
+        //         name: 'Elsie',
+        //         dateOfBirth: {
+        //             day: 12,
+        //             month: 2,
+        //             year: 1989
+        //         },
+        //         description: 'Canadian author'
+        //     },
+        //     name: 'Flawless',
+        //     genre: 'Romance',
+        //     publisher: {
+        //         name: 'Piatkus',
+        //         regNum: 12324-32992, //can I use '-'?
+        //         year: 2023
+        //     }
+        // })
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task 3</h1>
+            <p>
+                Задача 3. Об’єкт “Фірма” (використати члени-класи)
+            </p>
+            <script>
+                // 'use strict'
+                // если использовать режим 'use strict', то в массиве нельзя назвать объекты, будет ошибка undefined 
+                // companyBranches: [
+                // br = {country: 'USA',
+                //  city: 'LA',
+                //  street: 'Moody St',
+                //  houseNumber: 3
+                //         }]
+
+
+                // нужно было создать разные классы (використати члени-класи)
+
+                
+                class Company {
+                    #companyName
+                    #foundationMonth
+                    #foundationYear
+                    get CompanyName() {
+                        return this.#companyName
+                    }
+                    set CompanyName(newCompanyName) {
+                        if(typeof newCompanyName !== 'string') throw new Error('cant use symbols or numbers')
+                        
+                        return this.#companyName = newCompanyName
+                    }
+
+                    get FoundationYear() {
+                        return this.#foundationYear
+                    }
+                
+                    set FoundationYear(foundationYearOfCompany) {
+                        if(foundationYearOfCompany < 0 && foundationYearOfCompany > this.currentYear) throw new Error('cant use symbols or numbers')
+                        
+                        return this.#foundationYear = foundationYearOfCompany
+                    }
+
+                    get FoundationMonth() {
+                        return this.#foundationMonth
+                    }
+
+                    constructor(companyObject) {
+                        this.currentYear = 2024
+                        this.CompanyName = companyObject.companyName
+                        this.#foundationMonth = companyObject.foundationMonth
+                        this.FoundationYear = companyObject.foundationYear
+                        this.servicesName = companyObject.services.name
+                        this.servicesPrice = companyObject.services.price
+                        this.servicesDeadline = companyObject.services.deadline
+                        this.companyBranches = companyObject.companyBranches
+                        // this.companyAddress = companyObject.companyBranches.companyAddress.country
+                        // this.companyAddress = companyObject.companyBranches.companyAddress.city
+                        // this.companyAddress = companyObject.companyBranches.companyAddress.street
+                        // this.companyAddress = companyObject.companyBranches.companyAddress.houseNumber
+                    }
+                    
+                    getAmountOfExistingYears(currentYear) {
+                        return this.currentYear - this.FoundationYear
+                    }
+
+                    getBranchesInCity(city) {
+                        // return branchesInCity = this.companyBranches.fillter((el) => el.city === city)
+                        let branchesInCity = []
+                        this.companyBranches.forEach(element => {
+                            if(element.city === city)
+                            branchesInCity.push(element)
+                        })
+                        return branchesInCity
+                        
+                    }
+
+                    toString() {
+                        return `Name of services : ${this.servicesName}<br> The price is - ${this.servicesPrice} (it will take ${this.servicesDeadline} days)<br>`
+                    }
+                }
+                let com = {
+                    companyName: 'Google',
+                    foundationMonth: 'July',
+                    foundationYear: 1998,
+                    services: {
+                        name: 'development',
+                        price: 2000,
+                        deadline: 18
+                    },
+                    companyBranches: [
+                        {
+                            country: 'USA',
+                            city: 'LA',
+                            street: 'Moody St',
+                            houseNumber: 3
+                        },
+                        {
+                            country: 'USA',
+                            city: 'LA',
+                            street: 'Atl St',
+                            houseNumber: 7
+                        },
+                        {
+                            country: 'USA',
+                            city: 'Miami',
+                            street: 'St Joseph',
+                            houseNumber: 1
+                        },
+                        {
+                            country: 'USA',
+                            city: 'Miami',
+                            street: 'Nix',
+                            houseNumber: 9
+                        }
+                    ]
+                }
+                let newCom = new Company(com)
+                let r = newCom.getBranchesInCity('LA')
+                let b = newCom.CompanyName
+                console.log(newCom.getBranchesInCity('LA'))
+                b = 'J'
+                document.write(newCom)
+                let a = newCom.getAmountOfExistingYears()
+                document.write(b)
+                document.write(a)
+                let c = newCom.FoundationMonth
+                document.write(c)
+
+            </script>
+</body>
+</html>

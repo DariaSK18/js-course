@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Task 1</h1>
+            <p>
+                Задача 1. Розробити калькулятор
+            </p>
+
+            <div class="calculator">
+                <div>
+                    <label for="num1">
+                        First number
+                        <input id="num1" type="
+                        text">
+                    </label>
+                </div>
+                <div>
+                    <label for="num2">
+                        Second number
+                        <input id="num2" type="text">
+                    </label>
+                </div>
+                <div class="butons">
+                    <button class="add">Add</button>
+                    <button class="subtract">Subtract</button>
+                    <button class="multiply">Myltiply</button>
+                    <button class="divide">Divide</button>
+                </div>
+                <hr>
+                <label for="result">
+                    Result
+                    <input id="result" type="text">
+                </label>
+            </div>
+            <script>
+            //    let btn = document.querySelector('button')
+            //    btn.onclick = ()=>alert('hi')
+            // function calculator() {
+                
+            // }
+            
+            function calculate(action) {
+                let firstNum = parseFloat(document.getElementById('num1').value)
+                let secondNum = parseFloat(document.getElementById('num2').value)
+                let result
+
+                switch (action) {
+                    case 'btnAdd':
+                        result = firstNum + secondNum
+                        break
+                    case 'btnSubtract':
+                        result = firstNum - secondNum
+                        break
+                    case 'btnMultiply':
+                        result = firstNum * secondNum
+                        break
+                    case 'btnDivide':
+                        result = firstNum / secondNum
+                        break
+                }
+                document.getElementById('result').value = result
+
+                // if('btnAdd'){
+                //     result = firstNum + secondNum
+                // }
+                // else if('btnSubtract'){
+                //     result = firstNum - secondNum
+                // }
+                // else if('btnMultiply'){
+                //     result = firstNum * secondNum
+                // }
+                // else if('btnDivide'){
+                //     result = firstNum / secondNum
+                // }
+                
+                // document.getElementById('result').value = result
+            }
+          
+            window.onload = function() {
+                document.querySelector('.add').onclick = ()=> calculate('btnAdd')
+                document.querySelector('.subtract').onclick = ()=>calculate('btnSubtract')
+                document.querySelector('.multiply').onclick = ()=> calculate('btnMultiply')
+                document.querySelector('.divide').onclick = ()=> calculate('btnDivide')
+            }
+             
+
+            </script>
+</body>
+</html>

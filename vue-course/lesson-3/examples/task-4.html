@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Task 4</title>
+    <style>
+      .field-container{
+        display: flex;
+        gap: 5px;
+      }
+      .cell-style{
+        width: 40px;
+        height: 40px;
+        border: 2px solid black;
+      }
+      .closed{
+        background-color: lightgray;
+      }
+      .mine{
+        background-color: red;
+      }
+      .free{
+        background-color: green;
+      }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="field-container">
+          <div class="cell-style" :class="getCellClass(cell)" v-for="(cell, index) in gameField" :key="index"  @click="onCellClick(index)"></div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+        const gameField = [
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+        ]
+      
+        createApp({
+          data() {
+            return {
+              gameField: [
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 1,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+          {
+            hasMine: 0,
+            isClosed: true,
+          },
+        ]
+            }
+          },
+          methods: {
+            onCellClick(index){
+              this.gameField[index].isClosed = false
+              for (let i = index -1; i>=0 && !this.gameField[i].hasMine && !this.gameField[index].hasMine; i--) {
+                this.gameField[i].isClosed = false
+              }
+              for (let i = index; i < this.gameField.length && !this.gameField[i].hasMine && !this.gameField[index].hasMine; i++) {
+                this.gameField[i].isClosed = false
+              }
+            },
+            getCellClass(cell){
+              let currentClass
+              if(cell.isClosed) currentClass = 'closed'
+              else{
+                if(cell.hasMine) currentClass = 'mine'
+                else currentClass = 'free'
+              }
+              return currentClass
+            }
+          },
+          computed: {
+            
+          }
+        }).mount('#app')
+      </script>
+<!-- 
+{
+  'closed': cell.isClosed,
+  'mine': !cell.isClosed && cell.hasMine,
+  'free': !cell.isClosed && !cell.hasMine
+} -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Розробити клас Baner
+    </p>
+    <a href="https://www.youtube.com/"></a>
+    <script>
+        class Baner {
+            constructor(array) {
+                this.array = array
+            }
+            getRandomBanerIndex() {
+                return Math.floor(Math.random() * this.array.length)
+            }
+            toString() {
+                const banerIndex = this.getRandomBanerIndex()
+                return `Tap the link: ${this.array[banerIndex].link}<br> ${this.array[banerIndex].image}`
+            }
+        }
+
+        let arrayOfBanners = [
+            {
+                image: '<img src="../img/band.jpg" alt="Image">',
+                link: '<a href="https://www.youtube.com/">YouTube</a>'
+            },
+            {
+                image: '<img src="../img/dog.jpg" alt="Image">',
+                link: '<a href="https://www.google.com/">Google</a>'
+            },
+            {
+                image: '<img src="../img/garden.jpg" alt="Image">',
+                link: '<a href="https://www.booking.com/">Booking</a>'
+            }
+        ]
+
+        let ban1 = new Baner(arrayOfBanners)
+        document.write(ban1.toString())
+        
+        
+    </script>
+</body>
+
+</html>

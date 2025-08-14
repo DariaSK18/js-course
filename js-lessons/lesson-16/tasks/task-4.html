@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task 4</h1>
+    <p>
+        Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+    </p>
+    <script>
+        class Note {
+            constructor(noteValue, noteAmount) {
+                this.noteValue = noteValue
+                this.noteAmount = noteAmount
+            }
+
+            get totalAmount(){
+                return this.noteAmount * this.noteValue
+            }
+        }
+
+        class TBankomat {
+            constructor(noteList) {
+                this.noteList = noteList
+            }
+
+            getMaxAmountToWithdraw() {
+                return this.noteList.reduce((prevSum, el) => (el.noteAmount > 0 ? prevSum + (el.noteAmount * el.noteValue) : prevSum), 0)
+            }
+
+            getMinAmountToWithdraw() {
+                let min = Infinity
+                this.noteList.forEach(el => {
+                    if(el.noteAmount > 0 && el.noteValue < min)
+                    min = el.noteValue
+                })
+                return min
+            }
+
+            withdrawMoney(amountToWithdraw) {
+                let maxAmountToWithdraw = this.getMaxAmountToWithdraw()
+                let minAmountToWithdraw = this.getMinAmountToWithdraw()
+                if(amountToWithdraw < maxAmountToWithdraw && (amountToWithdraw % this.noteList.reduce((prevSum, el) => (el.noteAmount > 0 ? prevSum = el.noteValue : prevSum), 0) == 0)) {
+                     while (amountToWithdraw !== 0 && amountToWithdraw !== false) {
+                        this.noteList.reduce((prevSum, el) => {
+                            if(el.noteValue <= amountToWithdraw && el.noteAmount !== 0) {
+                                let neededAmountOfNotes = Math.floor(amountToWithdraw / el.noteValue)
+                                let notesToGive = Math.min(el.noteAmount, neededAmountOfNotes)
+                                if(el.noteValue === minAmountToWithdraw && amountToWithdraw > (el.noteValue * el.noteAmount)) {
+                                    console.log('oops')
+                                    return amountToWithdraw = false
+                                }
+                                else {
+                                amountToWithdraw -= notesToGive * el.noteValue
+                                el.noteAmount -= notesToGive
+                            }
+                            } 
+                        }, 0)
+
+                       
+                    }
+                }
+                else {
+                    let denominationToWithdraw = []
+                    this.noteList.filter((el) => {
+                        if(el.noteAmount > 0)
+                        denominationToWithdraw.push(el.noteValue)
+                    }
+                    )
+                    console.log(denominationToWithdraw)
+                }
+                return this.noteList
+            }
+        }
+
+        let noteList = [new Note(200, 9), new Note(100, 103), new Note(50, 60), new Note(20, 7), new Note(10, 2), new Note(5, 3)]
+
+        let b = new TBankomat(noteList)
+        
+        b.withdrawMoney(2000)
+        b.withdrawMoney(255)
+        b.withdrawMoney(110)
+        b.withdrawMoney(15)
+        b.withdrawMoney(15)
+        b.withdrawMoney(55)
+        b.withdrawMoney(110)
+        
+        // function getMaxAmountToWithdraw (bankomat) {
+        //     let sum = 0
+        //         Object.entries(bankomat).forEach(([key, value]) => {
+        //             console.log(key, value)
+        //             sum = value + sum
+        //         })
+        //     return sum
+        // }
+        
+        
+        
+    </script>
+</body>
+
+</html>
