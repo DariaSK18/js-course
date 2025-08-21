@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="scriptLocalStorage.js" defer></script>
+    <script src="scriptToDo.js" defer></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .content {
+        flex-grow: 1;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
-    <input type="color" id="colorSelector" />
-    <span id="span"></span>
+    <div class="content">
+      <h2>To Do List</h2>
+      <label for="task-input">Enter the task to do : </label>
+      <input id="task-input" type="text" placeholder="Task" />
+      <button class="add-button">Add task</button>
+      <div class="list"></div>
+    </div>
+    <div class="footer">
+      <input type="color" id="colorSelector" />
+      <span id="span"></span>
+    </div>
   </body>
 </html>
