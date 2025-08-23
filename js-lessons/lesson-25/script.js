@@ -37,10 +37,13 @@ const bookInput = document.querySelector("#book-input");
 const findBtn = document.querySelector("#find");
 
 // +inauthor:${bookInput}
+// encodeURIComponent(...) кодирует строку для безопасной передачи в URL Harry%20Potter%20%26%20Magic
+// если вставить Harry Potter & Magic прямо в URL, пробелы и символ & поломают запрос, поэтому лучше использовать encodeURIComponent
+
 
 findBtn.addEventListener("click", () => {
   fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=intitle:${bookInput.value.trim()}`
+    `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(bookInput.value.trim())}`
   )
     .then((response) => {
       console.log("---response", response);
